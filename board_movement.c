@@ -21,6 +21,7 @@ void try_merge(t_vector position, t_vector direction, t_board *board)
 	if (!tile_to_check->is_merged && actual_tile->value == tile_to_check->value)
 	{
 		tile_to_check->value *= 2;
+		board->score += tile_to_check->value; // augmenter le score en ajoutant la valeur de la tile créé
 		tile_to_check->is_merged = true;
 		actual_tile->value = 0;
 
