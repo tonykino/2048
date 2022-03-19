@@ -8,10 +8,9 @@
 
 void print_tile_content(t_board *board, t_tile *tile)
 {
-	char msg[5];
-
-	sprintf(msg, "%d", tile->value); // TODO : Remplacer sprintf par une fonction custom
-	mvprintw(tile->line_idx * (board->tile_height +1) + board->tile_height / 2, tile->col_idx * (board->tile_width + 1) + board->tile_width / 2, msg);
+	mvprintw(	tile->line_idx * (board->tile_height +1) + board->tile_height / 2, \
+				tile->col_idx * (board->tile_width + 1) + board->tile_width / 2, \
+				ft_itoa(tile->value));
 }
 
 void print_tiles_content(t_board *board)
@@ -42,8 +41,8 @@ int main()
 	cbreak();  // Description of cbreak, noecho and nonl : https://manpages.debian.org/bullseye/ncurses-doc/nonl.3ncurses.en.html
 	noecho();
 	nonl();
-	game_window = newwin(LINES, COLS, 0, 0);
-	keypad(game_window, TRUE); // enable arrow keys // necessary ?? A priori oui sinon les fleches envoient 3 signaux
+	// game_window = newwin(LINES, COLS, 0, 0);
+	keypad(stdscr, TRUE); // enable arrow keys // necessary ?? A priori oui sinon les fleches envoient 3 signaux
 	init_board(&board);
 
 	int c; // à retenir qu'il est pas init
@@ -94,11 +93,12 @@ int main()
 
 		print_tiles_content(&board);
         
-		wrefresh(game_window);
+		// wrefresh(game_window);
 		refresh();
-		c = wgetch(game_window);
+		// c = wgetch(game_window);
+		c = getch();
     }
-    delwin(game_window);
+    // delwin(game_window);
     endwin();
     
     free(game_window);
