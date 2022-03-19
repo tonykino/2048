@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_select_menu.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:32:24 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 16:37:38 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/19 22:37:37 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../2048.h"
+#include "2048.h"
 
 int		ft_select_menu(int move, int current_pos, int menu_size)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_center.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 18:02:35 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 18:02:47 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/19 22:41:56 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../2048.h"
+#include "2048.h"
 
 void	ft_print_center(t_vars *vars, char *str)
 {

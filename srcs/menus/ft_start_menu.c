@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start_menu.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 13:06:09 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 19:41:56 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/19 22:37:37 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../2048.h"
+#include "2048.h"
 
 void	ft_start_menu(t_vars *vars)
 {

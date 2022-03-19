@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_leaderboard.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:04:00 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 20:15:29 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/20 00:04:25 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../2048.h"
+#include "2048.h"
 
 void	ft_leaderboard(t_vars *vars)
 {

@@ -17,13 +17,15 @@ int check_win(t_board *board, long win_val)
 //de chaque carré pour voir si il y a au moins deux carrés égaux
 int check_lost(t_board *board)
 {
-	for(int y = 0; y < board->line_nb; y++)
+	for(int line = 0; line < board->line_nb; line++)
 	{
-		for(int x = 0; x < board->col_nb; x++)
+		for(int col = 0; col < board->col_nb; col++)
 		{
-			if (y < board->line_nb - 1 && board->tiles[y][x].value == board->tiles[y + 1][x].value)
+			if (board->tiles[line][col].value == 0)
 				return (0);
-			if (x < board->col_nb -1 && board->tiles[y][x].value == board->tiles[y][x + 1].value)
+			if (line < board->line_nb - 1 && board->tiles[line][col].value == board->tiles[line + 1][col].value)
+				return (0);
+			if (col < board->col_nb - 1 && board->tiles[line][col].value == board->tiles[line][col + 1].value)
 				return (0);
 		}
 	}
@@ -32,10 +34,6 @@ int check_lost(t_board *board)
 
 void check_board_status(t_board *board)
 {
-	enum e_const
-	{
-		WIN_VALUE = 2048
-	};
 	long win_val;
 
 	if (WIN_VALUE != 0 && (WIN_VALUE & (WIN_VALUE - 1)) == 0)
@@ -45,6 +43,11 @@ void check_board_status(t_board *board)
 
 	if (board->game_status != KEEP_PLAYING && check_win(board, win_val))
 		board->game_status = WIN;
-	else if (check_loose(board))
+	else if (check_lost(board))
+	{
+		char msg[40];
+		sprintf(msg, "check lost = %d", check_lost(board));
+        mvprintw(2, 1, msg); // Message de debug temporaire	
 		board->game_status = LOST;
+	}
 }

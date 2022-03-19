@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2048.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:29:42 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 20:21:35 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/19 22:42:05 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // # include <stdio.h>, pas besoin de l'inclure, elle l'est implicitement par ncurses.h
 # include <ncurses.h>
 # include <stdlib.h>
+#include "libft.h"
 
 # define ESC 27
 # define UP 259
@@ -72,7 +73,6 @@ void	ft_leaderboard(t_vars *vars);
 void	ft_debug(t_vars *vars);
 void	ft_init_struct(t_vars *vars);
 void	ft_get_win_size(t_vars *vars);
-int		ft_strlen(char *str);
 void	ft_break_line(t_vars *vars);
 void	ft_break_lines(t_vars *vars, int nb_breaks);
 void	ft_clear(t_vars *vars);
