@@ -24,6 +24,14 @@ typedef struct s_tile {
 	bool is_merged;
 } t_tile;
 
+typedef enum e_game_status
+{
+	IN_GAME,
+	LOST,
+	WIN,
+	KEEP_PLAYING
+}			enum_game_status;
+
 typedef struct s_board {
 	int line_nb;
 	int col_nb;
@@ -32,6 +40,7 @@ typedef struct s_board {
 	int tile_height;
 	bool has_changed;
 	int	score;
+	enum_game_status game_status;
 	t_tile **tiles;
 } t_board;
 
