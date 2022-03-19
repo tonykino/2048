@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_debug.c                                         :+:      :+:    :+:   */
+/*   ft_select_menu.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 01:00:19 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 16:23:44 by nlafarge         ###   ########.fr       */
+/*   Created: 2022/03/19 16:32:24 by nlafarge          #+#    #+#             */
+/*   Updated: 2022/03/19 16:37:38 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../2048.h"
 
-/*
-	FOR DEBUG PURPOSES ONLY
-	Prints all the debug information on the screen
-*/
-
-void	ft_debug(t_vars *vars)
+int		ft_select_menu(int move, int current_pos, int menu_size)
 {
-	printw("\n\n%d\n\n", vars->key);
+	current_pos = current_pos + move;
+	menu_size--; // Because the menu size is +1 of the array size
+
+	if (current_pos > menu_size)
+		current_pos = 0;
+	else if (current_pos < 0)
+		current_pos = menu_size;
+
+	return (current_pos);
 }

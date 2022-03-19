@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_debug.c                                         :+:      :+:    :+:   */
+/*   ft_leaderboard.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 01:00:19 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 16:23:44 by nlafarge         ###   ########.fr       */
+/*   Created: 2022/03/19 17:04:00 by nlafarge          #+#    #+#             */
+/*   Updated: 2022/03/19 17:04:11 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../2048.h"
 
-/*
-	FOR DEBUG PURPOSES ONLY
-	Prints all the debug information on the screen
-*/
-
-void	ft_debug(t_vars *vars)
+void	ft_leaderboard(t_vars *vars)
 {
-	printw("\n\n%d\n\n", vars->key);
+	clear();
+	printw("Coucou leaderboard %d", vars->actual_cursor_line);
+	refresh();
+
+	while(1)
+	{
+		
+	}
 }
