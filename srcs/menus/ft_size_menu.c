@@ -6,7 +6,7 @@
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 18:01:50 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 20:16:54 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/19 20:21:26 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,15 @@ void	ft_size_menu(t_vars *vars)
 	}
 
 	if (vars->selected_menu_pos == 0) // 4 X 4
+	{
+		vars->game_size = 4;
 		ft_launch_game(vars);
+	}
 	else if (vars->selected_menu_pos == 1) // 5 X 5
+	{
+		vars->game_size = 5;
 		ft_launch_game(vars);
+	}
 	else if (vars->selected_menu_pos == 2) // Back
 		ft_start_menu(vars);
 }

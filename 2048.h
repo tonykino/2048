@@ -6,7 +6,7 @@
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:29:42 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 18:15:16 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/19 20:21:35 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef	struct s_vars
 	int		actual_cursor_line;
 	int		key;
 	int		selected_menu_pos;
+	int		game_size;
 }	t_vars;
 
 /*
