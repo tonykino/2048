@@ -35,10 +35,10 @@ void try_merge(t_vector position, t_vector direction, t_board *board);
 /***********************************************************************/
 
 void move_tile_vertical(t_vector position, t_vector vector_dir, t_board *board);
-void move_board_vertical(enum_dir direction, t_board *board);
+void move_board_vertical(int direction, t_board *board);
 void move_tile_horizontal(t_vector position, t_vector vector_dir, t_board *board);
-void move_board_horizontal(enum_dir direction, t_board *board);
+void move_board_horizontal(int direction, t_board *board);
 
 //fonction à appeler pour initer un move dans une direction
-void board_move(enum_dir direction, t_board *board);
+void board_move(int direction, t_board *board);
 #endif

@@ -61,7 +61,7 @@ void move_tile_vertical(t_vector position, t_vector vector_dir, t_board *board)
 	try_merge(position, vector_dir, board);
 }
 
-void move_board_vertical(enum_dir direction, t_board *board)
+void move_board_vertical(int direction, t_board *board)
 {
 	t_vector position = get_start(direction, board);
 	t_vector vector_dir = enum_to_vector(direction);
@@ -105,7 +105,7 @@ void move_tile_horizontal(t_vector position, t_vector vector_dir, t_board *board
 	try_merge(position, vector_dir, board);
 }
 
-void move_board_horizontal(enum_dir direction, t_board *board)
+void move_board_horizontal(int direction, t_board *board)
 {
 	t_vector position = get_start(direction, board);
 	t_vector vector_dir = enum_to_vector(direction);
@@ -128,12 +128,12 @@ void move_board_horizontal(enum_dir direction, t_board *board)
 }
 
 //fonction à appeler pour initer un move dans une direction
-void board_move(enum_dir direction, t_board *board)
+void board_move(int direction, t_board *board)
 {
 	board->has_changed = false;
-	if (direction == UP || direction == DOWN)
+	if (direction == KEY_UP || direction == KEY_DOWN)
 		move_board_vertical(direction, board);
-	else if (direction == LEFT || direction == RIGHT)
+	else if (direction == KEY_LEFT || direction == KEY_RIGHT)
 		move_board_horizontal(direction, board);
 	
 	//clear the is_merge status

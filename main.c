@@ -64,7 +64,13 @@ void init_colors()
 
 // Test movement with gcc main.c board.c ft_calloc.c randomizer.c board_movement.c vector_conversions.c -lncurses -o test && ./test
 
-
+void handle_arrow(int direction, t_board *board)
+{
+	board_move(direction, board);
+	// TODO : Check victory or defeat ?
+	if (board->has_changed)
+		generate_random_number_in_random_empty_tile(board);
+}
 
 int main()
 {
@@ -90,57 +96,46 @@ int main()
     }
 
 	init_colors();
+	generate_random_number_in_random_empty_tile(&board);
+	generate_random_number_in_random_empty_tile(&board);
 
 	int c = 0; // à retenir qu'il est pas init
     while(1) {
         clear();
 		update_board(&board);
 
-
+		
 		switch (c)
 		{
 		case 410: // resize window
 			break;
 		case KEY_UP:
-       		// mvprintw(5, 1, "ARROW_UP pressed");
-			board_move(UP, &board);
-			break;
 		case KEY_DOWN:
-			// mvprintw(5, 1, "ARROW_DOWN pressed");
-			board_move(DOWN, &board);
-			break;
 		case KEY_LEFT:
-			// mvprintw(5, 1, "ARROW_LEFT pressed");	
-			board_move(LEFT, &board);
-			break;
 		case KEY_RIGHT:
-			// mvprintw(5, 1, "ARROW_RIGHT pressed");
-			board_move(RIGHT, &board);
+			handle_arrow(c, &board);
 			break;
 		default:
 			// mvprintw(10, 1, "Character pressed is = %d Hopefully it can be printed as '%c'", c, c);
 			break;
 		}
 
-		if (board.has_changed)
-			generate_random_number_in_random_empty_tile(&board);
+		print_tiles_content(&board);
 
 		print_board(&board);
-		sprintf(msg, "Tile_width = %d", board.tile_width);
-        mvprintw(1, 1, msg); // Message de debug temporaire	
-		sprintf(msg, "Tile_heigth = %d", board.tile_height);
-        mvprintw(2, 1, msg); // Message de debug temporaire	
-		sprintf(msg, "COLS = %d, LINES = %d", COLS, LINES);
-        mvprintw(3, 1, msg); // Message de debug temporaire
 
-		print_tiles_content(&board);
-        
-		// wrefresh(game_window);
+		// sprintf(msg, "Tile_width = %d", board.tile_width);
+        // mvprintw(1, 1, msg); // Message de debug temporaire	
+		// sprintf(msg, "Tile_heigth = %d", board.tile_height);
+        // mvprintw(2, 1, msg); // Message de debug temporaire	
+		// sprintf(msg, "COLS = %d, LINES = %d", COLS, LINES);
+        // mvprintw(3, 1, msg); // Message de debug temporaire
+		// sprintf(msg, "board has changed ? %d", board.has_changed);
+        // mvprintw(4, 1, msg); // Message de debug temporaire
+
 		refresh();
-		// c = wgetch(game_window);
 		c = getch();
     }
-    // delwin(game_window);
     endwin();
     
     free(game_window);
