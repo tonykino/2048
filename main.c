@@ -4,6 +4,7 @@
 #include "board.h"
 #include "time.h"
 #include "randomizer.h"
+#include "board_movement.h"
 
 void print_tile_content(t_board *board, t_tile *tile)
 {
@@ -27,6 +28,8 @@ void print_tiles_content(t_board *board)
 
 // Test with gcc main.c board.c ft_calloc.c randomizer.c -lncurses -o test && ./test
 
+// Test movement with gcc main.c board.c ft_calloc.c randomizer.c board_movement.c vector_conversions.c -lncurses -o test && ./test
+
 int main()
 {
 	t_board board;
@@ -43,7 +46,7 @@ int main()
 	keypad(game_window, TRUE); // enable arrow keys // necessary ?? A priori oui sinon les fleches envoient 3 signaux
 	init_board(&board);
 
-	int c;
+	int c; // à retenir qu'il est pas init
     while(1) {
         clear();
 		update_board(&board);
@@ -63,21 +66,25 @@ int main()
 		case KEY_UP:
        		mvprintw(5, 1, "ARROW_UP pressed");
 				// TODO : manage up key
+			board_move(UP, &board);
 			generate_random_number_in_random_empty_tile(&board);
 			break;
 		case KEY_DOWN:
 			mvprintw(5, 1, "ARROW_DOWN pressed");
 				// TODO : manage down key	
+			board_move(DOWN, &board);
 			generate_random_number_in_random_empty_tile(&board);
 			break;
 		case KEY_LEFT:
 			mvprintw(5, 1, "ARROW_LEFT pressed");	
 				// TODO : manage left key
+			board_move(LEFT, &board);
 			generate_random_number_in_random_empty_tile(&board);
 			break;
 		case KEY_RIGHT:
 			mvprintw(5, 1, "ARROW_RIGHT pressed");
 				// TODO : manage right key
+			board_move(RIGHT, &board);
 			generate_random_number_in_random_empty_tile(&board);
 			break;
 		default:

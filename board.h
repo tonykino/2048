@@ -2,12 +2,13 @@
 #define BOARD_H
 
 #include "libft.h"
+#include <stdbool.h>
 
 typedef struct s_tile {
 	int value;
 	int line_idx;
 	int col_idx;
-	// bool is_merged;
+	bool is_merged;
 } t_tile;
 
 typedef struct s_board {
