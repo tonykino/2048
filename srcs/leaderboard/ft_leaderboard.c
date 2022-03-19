@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:04:00 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 00:04:25 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 00:46:44 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	ft_leaderboard(t_vars *vars)
 {
 	int	i;
 	char *leaderboard[] = {
-		" JEAN ",
-		" LOUIS ",
-		" MICHEL ",
-		" CLAUDETTE ",
-		" HUGO ",
-		" LOUISE ",
-		" JEANNETTE ",
-		" JEAN-CLAUDE ",
-		" BERNARD ",
-		" LUC "
+		" JEAN",
+		" LOUIS",
+		" MICHEL",
+		" CLAUDETTE",
+		" HUGO",
+		" LOUISE",
+		" JEANNETTE",
+		" JEAN-CLAUDE",
+		" BERNARD",
+		" LUC"
 	};
 	char *scores[] = {
 		"235345",
@@ -48,7 +48,7 @@ void	ft_leaderboard(t_vars *vars)
 	int menu_size = sizeof(menu) / sizeof(char *);
 	int menu_height = leaderboard_height + 5;
 
-	int max_length = 0;
+	size_t max_length = 0;
 
 	vars->key = 0;
 	vars->selected_menu_pos = 0;
@@ -79,18 +79,17 @@ void	ft_leaderboard(t_vars *vars)
 		ft_break_lines(vars, 2);
 		for (i = 0; i < leaderboard_size; i++)
 		{
-			int tmp = ft_strlen(leaderboard[i]) + ft_strlen(scores[i]);
+			size_t tmp = ft_strlen(leaderboard[i]) + ft_strlen(scores[i]);
 			if (tmp > max_length)
 				max_length = tmp;
 		}
 		printw("\n\n");
 		for (i = 0; i < leaderboard_size; i++)
 		{
-			int x;
-			for (x = 0; x < ((vars->nb_char_cols - max_length) / 2 - 3); x++)
+			for (int x = 0; x < ((vars->nb_char_cols - max_length) / 2 - 3); x++)
 				printw(" ");
-			printw("%s", leaderboard[i]);
-			for (x = -1; x < (max_length - ft_strlen(leaderboard[i]) - ft_strlen(scores[i])); x++)
+			printw("%s ", leaderboard[i]);
+			for (size_t x = -1; x < (max_length - ft_strlen(leaderboard[i]) - ft_strlen(scores[i])); x++)
 				printw("-");
 			printw(" ");
 			printw("%s\n", scores[i]);

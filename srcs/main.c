@@ -85,16 +85,15 @@ int main()
 	srand(time(NULL));
 	// These functions are necessary to get character-at-a-time input
     initscr(); // Initialize curses library
-	cbreak();  // Description of cbreak, noecho and nonl : https://manpages.debian.org/bullseye/ncurses-doc/nonl.3ncurses.en.html
 	noecho();
-	nonl();
 	curs_set(0); // Make the cursor invisible
+	cbreak();  // Description of cbreak, noecho and nonl : https://manpages.debian.org/bullseye/ncurses-doc/nonl.3ncurses.en.html
 	// game_window = newwin(LINES, COLS, 0, 0);
 	keypad(stdscr, TRUE); // enable arrow keys // necessary ?? A priori oui sinon les fleches envoient 3 signaux
 	
-
 	print_menu();
 	
+	// nonl(); // Remove to permit enter
 	init_board(&board);
 
 	if (has_colors() == FALSE) {
