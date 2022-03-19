@@ -6,13 +6,16 @@ void init_board(t_board *board)
 	board->col_nb = 4;
 	board->line_nb = 4;
 	board->tile_nb = board->col_nb * board->line_nb;
-	board->tiles = calloc(board->line_nb, sizeof(int *));
+	board->tiles = ft_calloc(board->line_nb, sizeof(int *));
 	for (int i = 0; i < board->line_nb; i++)
 	{
-		board->tiles[i] = calloc(board->col_nb, sizeof(int));
+		board->tiles[i] = ft_calloc(board->col_nb, sizeof(int));
 	}
 	board->tile_width = (COLS - board->col_nb - 1) / board->col_nb;
 	board->tile_height = (LINES - board->line_nb - 1) / board->line_nb;
+
+
+	// Temporary put some content inside tile
 	for (int i = 0; i < board->line_nb; i++)
 	{
 		for (int j = 0; j < board->col_nb; j++)

@@ -1,6 +1,8 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+#include "libft.h"
+
 typedef struct s_board {
 	int line_nb;
 	int col_nb;
