@@ -6,7 +6,7 @@
 #    By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/19 00:10:11 by nlafarge          #+#    #+#              #
-#    Updated: 2022/03/19 17:07:28 by nlafarge         ###   ########.fr        #
+#    Updated: 2022/03/19 18:04:17 by nlafarge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ RM = rm -rf
 CFLAGS = -lncurses -Wall -Wextra -Werror
 
 MENUS =	srcs/menus/ft_start_menu.c \
-		srcs/menus/ft_select_menu.c
+		srcs/menus/ft_select_menu.c \
+		srcs/menus/ft_size_menu.c
 
 GAME = srcs/game/ft_launch_game.c
 
@@ -31,7 +32,8 @@ LIB = 	srcs/lib/ft_debug.c \
 		srcs/lib/ft_break_line.c \
 		srcs/lib/ft_break_lines.c \
 		srcs/lib/ft_clear.c \
-		srcs/lib/ft_vertical_align.c
+		srcs/lib/ft_vertical_align.c \
+		srcs/lib/ft_print_center.c
 
 SRCS = srcs/main.c \
 		${LIB} \

@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_print_center.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 01:54:55 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 18:15:27 by nlafarge         ###   ########.fr       */
+/*   Created: 2022/03/19 18:02:35 by nlafarge          #+#    #+#             */
+/*   Updated: 2022/03/19 18:02:47 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../2048.h"
 
-void	ft_init_struct(t_vars *vars)
+void	ft_print_center(t_vars *vars, char *str)
 {
-	vars->nb_char_lines = 0;
-	vars->nb_char_cols = 0;
-	vars->key = 0;
-	vars->actual_cursor_line = 0;
-	vars->selected_menu_pos = 0;
+	int	len;
+	int	x;
+
+	len = ft_strlen(str);
+	x = (vars->nb_char_cols - len) / 2;
+	mvprintw(vars->actual_cursor_line, x, "%s", str);
 }

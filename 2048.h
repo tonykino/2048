@@ -6,7 +6,7 @@
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:29:42 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 17:06:55 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/19 18:15:16 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef	struct s_vars
 	int		nb_char_cols;
 	int		actual_cursor_line;
 	int		key;
+	int		selected_menu_pos;
 }	t_vars;
 
 /*
@@ -41,7 +42,7 @@ int		main();
 	MENUS
 */
 void	ft_start_menu(t_vars *vars);
-void	ft_print_center(t_vars *vars, char *str);
+void	ft_size_menu(t_vars *vars);
 int		ft_select_menu(int move, int current_pos, int menu_size);
 
 /*
@@ -75,5 +76,6 @@ void	ft_break_line(t_vars *vars);
 void	ft_break_lines(t_vars *vars, int nb_breaks);
 void	ft_clear(t_vars *vars);
 void	ft_vertical_align(t_vars *vars, int element_height);
+void	ft_print_center(t_vars *vars, char *str);
 
 #endif
