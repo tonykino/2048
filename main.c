@@ -21,8 +21,8 @@ void init_board(t_board *board)
 	{
 		board->tiles[i] = calloc(board->col_nb, sizeof(int));
 	}
-	board->tile_width = 0;
-	board->tile_height = 0;
+	board->tile_width = (COLS - board->col_nb - 1) / board->col_nb;
+	board->tile_height = (LINES - board->line_nb - 1) / board->line_nb;
 	for (int i = 0; i < board->line_nb; i++)
 	{
 		for (int j = 0; j < board->col_nb; j++)
@@ -72,11 +72,18 @@ void print_board(t_board *board)
 int main()
 {
 	t_board board;
-    WINDOW *window;
+    WINDOW *game_window;
     char msg[30];
 	
-    initscr();
+	// These functions are necessary to get character-at-a-time input
+    initscr(); // Initialize curses library
+	cbreak();  // Description of cbreak, noecho and nonl : https://manpages.debian.org/bullseye/ncurses-doc/nonl.3ncurses.en.html
+	noecho();
+	nonl();
+	// game_window = newwin(LINES, COLS, 0, 0);
+	// keypad(game_window, TRUE); // enable arrow keys // necessary ??
 	init_board(&board);
+	int c;
     while(1) {
         clear();
 		update_board(&board);
@@ -98,14 +105,33 @@ int main()
 		sprintf(msg, "COLS = %d, LINES = %d", COLS, LINES);
         mvprintw(3, 1, msg);
 
+		switch (c)
+		{
+		case 410: // resize window
+			break;
+		case 65:
+       		mvprintw(5, 1, "ARROW_UP pressed");	
+			break;
+		case 66:
+			mvprintw(6, 1, "ARROW_DOWN pressed");	
+			break;
+		case 68:
+			mvprintw(7, 1, "ARROW_LEFT pressed");	
+			break;
+		case 67:
+			mvprintw(8, 1, "ARROW_RIGHT pressed");	
+			break;
+		default:
+			mvprintw(24, 0, "Character pressed is = %d Hopefully it can be printed as '%c'", c, c);
+			break;
+		}
         refresh();
-        if(getch() != 410)
-            break;
+		c = getch();
     }
     
     endwin();
     
-    free(window);
+    free(game_window);
 	// free_board(&board);
     
     return 0;
