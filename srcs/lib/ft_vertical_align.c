@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_debug.c                                         :+:      :+:    :+:   */
+/*   ft_vertical_align.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 01:00:19 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 16:23:44 by nlafarge         ###   ########.fr       */
+/*   Created: 2022/03/19 16:43:05 by nlafarge          #+#    #+#             */
+/*   Updated: 2022/03/19 16:44:48 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../2048.h"
 
-/*
-	FOR DEBUG PURPOSES ONLY
-	Prints all the debug information on the screen
-*/
-
-void	ft_debug(t_vars *vars)
+void	ft_vertical_align(t_vars *vars, int element_height)
 {
-	printw("\n\n%d\n\n", vars->key);
+	int top_margin = (vars->nb_char_lines - element_height) / 2;
+	ft_break_lines(vars, top_margin);
 }
