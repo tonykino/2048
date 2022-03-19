@@ -34,6 +34,7 @@ void update_board(t_board *board)
 {
 	board->tile_width = (COLS - board->col_nb - 1) / board->col_nb;
 	board->tile_height = (LINES - board->line_nb - 1) / board->line_nb;
+	// board->has_changed = false; // TODO BUG => has_changed need to be set to false to avoid creating new tile if user click on any key 
 }
 
 // void free_board(t_board *board)
@@ -54,12 +55,12 @@ void print_board(t_board *board)
 	{
 		for (int col = 0; col < board->col_nb * (board->tile_width + 1) + 1; col++)
 		{
-			if (line % (board->tile_height + 1) == 0 && col % (board->tile_width + 1) == 0)
-				mvprintw(line, col, "+");
-			else if (line % (board->tile_height + 1) == 0)
-				mvprintw(line, col, "-");
-			else if (col % (board->tile_width + 1) == 0)
-				mvprintw(line, col, "|");
+			if (line % (board->tile_height + 1) == 0 || col % (board->tile_width + 1) == 0)
+			{
+				attron(COLOR_PAIR(BORDER_PAIR));
+				mvaddch(line, col, ' ');
+				attroff(COLOR_PAIR(BORDER_PAIR));
+			}	
 		}
 	}
 }

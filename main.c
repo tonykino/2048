@@ -6,12 +6,27 @@
 #include "randomizer.h"
 #include "board_movement.h"
 
+void print_tile_background(t_board *board, t_tile *tile)
+{
+	for (int line = 0; line < board->tile_height; line++)
+	{
+		move(	tile->line_idx * (board->tile_height + 1) + 1 + line, \
+				tile->col_idx * (board->tile_width + 1) + 1);
+		hline(' ', board->tile_width);
+	}
+}
+
 void print_tile_content(t_board *board, t_tile *tile)
 {
+	attron(COLOR_PAIR(tile->value));
+	attron(A_BOLD);
+	print_tile_background(board, tile);
 	if (tile->value != 0)
 		mvprintw(	tile->line_idx * (board->tile_height +1) + board->tile_height / 2, \
 					tile->col_idx * (board->tile_width + 1) + board->tile_width / 2, \
 					ft_itoa(tile->value));
+	attroff(A_BOLD);
+	attroff(COLOR_PAIR(tile->value));
 }
 
 void print_tiles_content(t_board *board)
@@ -24,11 +39,32 @@ void print_tiles_content(t_board *board)
 		}
 	}
 }
-
-
-// Test with gcc main.c board.c ft_calloc.c randomizer.c -lncurses -o test && ./test
+// #define COLOR_BLACK	0
+// #define COLOR_RED	1
+// #define COLOR_GREEN	2
+// #define COLOR_YELLOW	3
+// #define COLOR_BLUE	4
+// #define COLOR_MAGENTA	5
+// #define COLOR_CYAN	6
+// #define COLOR_WHITE	7
+void init_colors()
+{
+	start_color();
+	init_pair(BORDER_PAIR, COLOR_CYAN, COLOR_CYAN);
+	init_pair(VALUE2_PAIR, COLOR_YELLOW, COLOR_WHITE);
+	init_pair(VALUE4_PAIR, COLOR_GREEN, COLOR_WHITE);
+	init_pair(VALUE8_PAIR, COLOR_BLUE, COLOR_WHITE);
+	init_pair(VALUE16_PAIR, COLOR_GREEN, COLOR_YELLOW);
+	init_pair(VALUE32_PAIR, COLOR_BLUE, COLOR_YELLOW);
+	init_pair(VALUE64_PAIR, COLOR_RED, COLOR_YELLOW);
+	init_pair(VALUE128_PAIR, COLOR_BLUE, COLOR_RED);
+	init_pair(VALUE256_PAIR, COLOR_MAGENTA, COLOR_RED);
+	init_pair(VALUE512_PAIR, COLOR_CYAN, COLOR_RED);
+}
 
 // Test movement with gcc main.c board.c ft_calloc.c randomizer.c board_movement.c vector_conversions.c -lncurses -o test && ./test
+
+
 
 int main()
 {
@@ -36,6 +72,7 @@ int main()
     WINDOW *game_window;
     char msg[40];
 	
+
 	srand(time(NULL));
 	// These functions are necessary to get character-at-a-time input
     initscr(); // Initialize curses library
@@ -46,18 +83,19 @@ int main()
 	keypad(stdscr, TRUE); // enable arrow keys // necessary ?? A priori oui sinon les fleches envoient 3 signaux
 	init_board(&board);
 
+	if (has_colors() == FALSE) {
+    	endwin();
+    	printf("Your terminal does not support color\n");
+    	exit(1);
+    }
+
+	init_colors();
+
 	int c = 0; // à retenir qu'il est pas init
     while(1) {
         clear();
 		update_board(&board);
-		print_board(&board);
 
-		// sprintf(msg, "Tile_width = %d", board.tile_width);
-        // mvprintw(1, 1, msg); // Message de debug temporaire	
-		// sprintf(msg, "Tile_heigth = %d", board.tile_height);
-        // mvprintw(2, 1, msg); // Message de debug temporaire	
-		// sprintf(msg, "COLS = %d, LINES = %d", COLS, LINES);
-        // mvprintw(3, 1, msg); // Message de debug temporaire
 
 		switch (c)
 		{
@@ -86,6 +124,14 @@ int main()
 
 		if (board.has_changed)
 			generate_random_number_in_random_empty_tile(&board);
+
+		print_board(&board);
+		sprintf(msg, "Tile_width = %d", board.tile_width);
+        mvprintw(1, 1, msg); // Message de debug temporaire	
+		sprintf(msg, "Tile_heigth = %d", board.tile_height);
+        mvprintw(2, 1, msg); // Message de debug temporaire	
+		sprintf(msg, "COLS = %d, LINES = %d", COLS, LINES);
+        mvprintw(3, 1, msg); // Message de debug temporaire
 
 		print_tiles_content(&board);
         
