@@ -6,7 +6,7 @@
 #    By: tokino <tokino@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/19 00:10:11 by nlafarge          #+#    #+#              #
-#    Updated: 2022/03/19 22:41:44 by tokino           ###   ########.fr        #
+#    Updated: 2022/03/20 00:11:49 by tokino           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ SRC     = $(addprefix srcs/, \
 				$(addprefix leaderboard/, 	file_scoring.c  ft_leaderboard.c) \
 				$(addprefix lib/, 			ft_break_line.c  ft_break_lines.c  ft_clear.c  ft_debug.c  ft_get_win_size.c  ft_init_struct.c  ft_print_center.c ft_vertical_align.c) \
 				$(addprefix libft/, 		ft_atoi.c  ft_calloc.c  ft_isalnum.c  ft_isalpha.c  ft_isdigit.c  ft_isspace.c  ft_itoa.c  ft_putnbr_fd.c  ft_strdup.c  ft_strlcpy.c  ft_strlen.c  get_next_line.c  get_next_line_utils.c) \
-				$(addprefix menus/, 			ft_select_menu.c  ft_size_menu.c  ft_start_menu.c))
+				$(addprefix menus/, 		print_menu.c	ft_select_menu.c  ft_size_menu.c  ft_start_menu.c))
 
 # OBJDIR := obj
 # OBJ     := $(addprefix $(OBJDIR)/, $(notdir $(SRC:.c=.o)))

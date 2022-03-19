@@ -79,11 +79,9 @@ void handle_arrow(int direction, t_board *board)
 int main()
 {
 	t_board board;
-	t_vars	vars;
     WINDOW *game_window;
     char msg[40];
 	
-	ft_init_struct(&vars);
 	srand(time(NULL));
 	// These functions are necessary to get character-at-a-time input
     initscr(); // Initialize curses library
@@ -94,11 +92,8 @@ int main()
 	// game_window = newwin(LINES, COLS, 0, 0);
 	keypad(stdscr, TRUE); // enable arrow keys // necessary ?? A priori oui sinon les fleches envoient 3 signaux
 	
-	clear();
-	ft_get_win_size(&vars);
-	ft_start_menu(&vars); // Launch the start menu
-	clear();
-	
+
+	print_menu();
 	
 	init_board(&board);
 
@@ -117,7 +112,6 @@ int main()
         clear();
 		update_board(&board);
 
-		
 		switch (c)
 		{
 		case 410: // resize window
@@ -133,20 +127,19 @@ int main()
 			break;
 		}
 
+		print_board(&board);
 		print_tiles_content(&board);
 
-		print_board(&board);
-
-		sprintf(msg, "Game status = %d", board.game_status);
-        mvprintw(1, 1, msg); // Message de debug temporaire	
+		// sprintf(msg, "Game status = %d", board.game_status);
+        // mvprintw(1, 1, msg); // Message de debug temporaire	
 		// sprintf(msg, "Tile_width = %d", board.tile_width);
         // mvprintw(1, 1, msg); // Message de debug temporaire	
 		// sprintf(msg, "Tile_heigth = %d", board.tile_height);
         // mvprintw(2, 1, msg); // Message de debug temporaire	
 		// sprintf(msg, "COLS = %d, LINES = %d", COLS, LINES);
         // mvprintw(3, 1, msg); // Message de debug temporaire
-		sprintf(msg, "board has changed ? %d", board.has_changed);
-        mvprintw(4, 1, msg); // Message de debug temporaire
+		// sprintf(msg, "board has changed ? %d", board.has_changed);
+        // mvprintw(4, 1, msg); // Message de debug temporaire
 
 		refresh();
 		c = getch();

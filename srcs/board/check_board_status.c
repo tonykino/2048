@@ -44,10 +44,5 @@ void check_board_status(t_board *board)
 	if (board->game_status != KEEP_PLAYING && check_win(board, win_val))
 		board->game_status = WIN;
 	else if (check_lost(board))
-	{
-		char msg[40];
-		sprintf(msg, "check lost = %d", check_lost(board));
-        mvprintw(2, 1, msg); // Message de debug temporaire	
 		board->game_status = LOST;
-	}
 }
