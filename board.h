@@ -18,6 +18,7 @@ typedef struct s_board {
 	int tile_width;
 	int tile_height;
 	bool has_changed;
+	int	score;
 	t_tile **tiles;
 } t_board;
 
