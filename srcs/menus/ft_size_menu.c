@@ -6,7 +6,7 @@
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 18:01:50 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 19:33:23 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/19 20:16:54 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_size_menu(t_vars *vars)
 {
 	int	i;
 	char *menu[] = {
-		" 4by4 ",
-		" 5by5 ",
+		" 4X4 GRID ",
+		" 5X5 GRID ",
 		" BACK "
 	};
 	int	menu_size = sizeof(menu) / sizeof(char *);
