@@ -6,7 +6,7 @@
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:29:42 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 02:35:05 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/19 13:07:10 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ typedef	struct s_vars
 	MAIN
 */
 int		main();
+
+/*
+	MENUS
+*/
+void	ft_start_menu(t_vars *vars);
 
 /*
 	LIB

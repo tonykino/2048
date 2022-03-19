@@ -6,7 +6,7 @@
 #    By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/19 00:10:11 by nlafarge          #+#    #+#              #
-#    Updated: 2022/03/19 01:56:01 by nlafarge         ###   ########.fr        #
+#    Updated: 2022/03/19 13:07:39 by nlafarge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,14 @@ CC = gcc
 RM = rm -rf
 CFLAGS = -lncurses -Wall -Wextra -Werror
 
+MENUS =	srcs/menus/ft_start_menu.c
+
 LIB = 	srcs/lib/ft_debug.c \
 		srcs/lib/ft_init_struct.c
 
 SRCS = srcs/main.c \
-		${LIB}
+		${LIB} \
+		${MENUS}
 
 OBJS = ${SRCS:.c=.o}
 
