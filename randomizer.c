@@ -63,5 +63,5 @@ void generate_random_number_in_random_empty_tile(t_board *board)
 	}
 	tile_to_fill->value = _generate_random_valid_number();
 	sprintf(msg, "Rand_nb = %d, new value = %d", rand_nb, tile_to_fill->value);
-	mvprintw(4, 1, msg); // Message de debug temporaire, cas spécial à gérer
+	// mvprintw(4, 1, msg); // Message de debug temporaire, cas spécial à gérer
 }

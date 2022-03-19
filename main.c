@@ -8,9 +8,10 @@
 
 void print_tile_content(t_board *board, t_tile *tile)
 {
-	mvprintw(	tile->line_idx * (board->tile_height +1) + board->tile_height / 2, \
-				tile->col_idx * (board->tile_width + 1) + board->tile_width / 2, \
-				ft_itoa(tile->value));
+	if (tile->value != 0)
+		mvprintw(	tile->line_idx * (board->tile_height +1) + board->tile_height / 2, \
+					tile->col_idx * (board->tile_width + 1) + board->tile_width / 2, \
+					ft_itoa(tile->value));
 }
 
 void print_tiles_content(t_board *board)
@@ -45,51 +46,46 @@ int main()
 	keypad(stdscr, TRUE); // enable arrow keys // necessary ?? A priori oui sinon les fleches envoient 3 signaux
 	init_board(&board);
 
-	int c; // à retenir qu'il est pas init
+	int c = 0; // à retenir qu'il est pas init
     while(1) {
         clear();
 		update_board(&board);
 		print_board(&board);
 
-		sprintf(msg, "Tile_width = %d", board.tile_width);
-        mvprintw(1, 1, msg); // Message de debug temporaire		
-		sprintf(msg, "Tile_heigth = %d", board.tile_height);
-        mvprintw(2, 1, msg); // Message de debug temporaire	
-		sprintf(msg, "COLS = %d, LINES = %d", COLS, LINES);
-        mvprintw(3, 1, msg); // Message de debug temporaire
+		// sprintf(msg, "Tile_width = %d", board.tile_width);
+        // mvprintw(1, 1, msg); // Message de debug temporaire	
+		// sprintf(msg, "Tile_heigth = %d", board.tile_height);
+        // mvprintw(2, 1, msg); // Message de debug temporaire	
+		// sprintf(msg, "COLS = %d, LINES = %d", COLS, LINES);
+        // mvprintw(3, 1, msg); // Message de debug temporaire
 
 		switch (c)
 		{
 		case 410: // resize window
 			break;
 		case KEY_UP:
-       		mvprintw(5, 1, "ARROW_UP pressed");
-				// TODO : manage up key
+       		// mvprintw(5, 1, "ARROW_UP pressed");
 			board_move(UP, &board);
-			generate_random_number_in_random_empty_tile(&board);
 			break;
 		case KEY_DOWN:
-			mvprintw(5, 1, "ARROW_DOWN pressed");
-				// TODO : manage down key	
+			// mvprintw(5, 1, "ARROW_DOWN pressed");
 			board_move(DOWN, &board);
-			generate_random_number_in_random_empty_tile(&board);
 			break;
 		case KEY_LEFT:
-			mvprintw(5, 1, "ARROW_LEFT pressed");	
-				// TODO : manage left key
+			// mvprintw(5, 1, "ARROW_LEFT pressed");	
 			board_move(LEFT, &board);
-			generate_random_number_in_random_empty_tile(&board);
 			break;
 		case KEY_RIGHT:
-			mvprintw(5, 1, "ARROW_RIGHT pressed");
-				// TODO : manage right key
+			// mvprintw(5, 1, "ARROW_RIGHT pressed");
 			board_move(RIGHT, &board);
-			generate_random_number_in_random_empty_tile(&board);
 			break;
 		default:
-			mvprintw(10, 1, "Character pressed is = %d Hopefully it can be printed as '%c'", c, c);
+			// mvprintw(10, 1, "Character pressed is = %d Hopefully it can be printed as '%c'", c, c);
 			break;
 		}
+
+		if (board.has_changed)
+			generate_random_number_in_random_empty_tile(&board);
 
 		print_tiles_content(&board);
         

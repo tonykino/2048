@@ -20,9 +20,11 @@ void try_merge(t_vector position, t_vector direction, t_board *board)
 	t_tile *tile_to_check	= &board->tiles[position.y + direction.y][position.x + direction.x];
 	if (!tile_to_check->is_merged && actual_tile->value == tile_to_check->value)
 	{
-		tile_to_check->value *=2;
+		tile_to_check->value *= 2;
 		tile_to_check->is_merged = true;
 		actual_tile->value = 0;
+
+		board->has_changed = true;
 	}
 }
 
@@ -53,6 +55,8 @@ void move_tile_vertical(t_vector position, t_vector vector_dir, t_board *board)
 		next_tile->value = actual_tile->value;
 		actual_tile->value = 0;
 		position.y += vector_dir.y;
+
+		board->has_changed = true;
 	}
 	try_merge(position, vector_dir, board);
 }
@@ -74,7 +78,7 @@ void move_board_vertical(enum_dir direction, t_board *board)
 		{
 			if (board->tiles[position.y][position.x].value != 0)
 				move_tile_vertical(position, vector_dir, board);
-			position.y -= vector_dir.y; // on pars du bord opposé donc on doit aller dans la direction inverse
+			position.y -= vector_dir.y; // on part du bord opposé donc on doit aller dans la direction inverse
 		}
 		position.x++;
 	}
@@ -95,6 +99,8 @@ void move_tile_horizontal(t_vector position, t_vector vector_dir, t_board *board
 		next_tile->value = actual_tile->value;
 		actual_tile->value = 0;
 		position.x += vector_dir.x;
+
+		board->has_changed = true;
 	}
 	try_merge(position, vector_dir, board);
 }
@@ -115,7 +121,7 @@ void move_board_horizontal(enum_dir direction, t_board *board)
 		{
 			if (board->tiles[position.y][position.x].value != 0)
 				move_tile_horizontal(position, vector_dir, board);
-			position.x -= vector_dir.x; // on pars du bord opposé donc on doit aller dans la direction inverse
+			position.x -= vector_dir.x; // on part du bord opposé donc on doit aller dans la direction inverse
 		}
 		position.y++;
 	}
@@ -124,6 +130,7 @@ void move_board_horizontal(enum_dir direction, t_board *board)
 //fonction à appeler pour initer un move dans une direction
 void board_move(enum_dir direction, t_board *board)
 {
+	board->has_changed = false;
 	if (direction == UP || direction == DOWN)
 		move_board_vertical(direction, board);
 	else if (direction == LEFT || direction == RIGHT)
