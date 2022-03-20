@@ -37,10 +37,11 @@ int get_scores_from_file(t_score **head)
 
 int put_score_to_file(t_score *head, char *pseudo)
 {
+	int i = 0;
 	int fd = open("scores.txt", O_CREAT | O_TRUNC | O_WRONLY, S_IRWXU);
 	if (fd < 0)
 		return (ERROR_FD);
-	while(head)
+	while(head && i < 15)
 	{
 		if (!head->pseudo)
 		{
@@ -55,6 +56,7 @@ int put_score_to_file(t_score *head, char *pseudo)
 		}
 		write(fd, "\n", 1);
 		head = head->next;
+		i++;
 	}
 	close(fd);
 	return (SUCCESS);
