@@ -31,6 +31,24 @@ int free_all(t_game *game, int error)
 	return 0;
 }
 
+int free_all(t_game *game, int error)
+{
+	if (game->board.tiles)
+	{
+		for(int y = 0; y < game->game_size; y++)
+		{
+			if (game->board.tiles[y])
+				free(game->board.tiles[y]);
+		}
+		free(game->board.tiles);
+	}
+	if (!error)
+		put_score_to_file(game->scores);
+	// if (!error && put_score_to_file(game->scores) == ERROR_FD)
+		// print_error_msg(ERROR_FD);
+	destroy_list(&game->scores);
+}
+
 int main()
 {
 	int ret;
