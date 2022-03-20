@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+         #
+#    By: tokino <tokino@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/19 00:10:11 by nlafarge          #+#    #+#              #
-#    Updated: 2022/03/20 09:00:31 by nlafarge         ###   ########.fr        #
+#    Updated: 2022/03/20 12:27:39 by tokino           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ SRC     = $(addprefix srcs/, \
 				$(addprefix game/,  		ft_game_loop.c ft_launch_game.c) \
 				$(addprefix leaderboard/, 	file_scoring.c  ft_leaderboard.c) \
 				$(addprefix lib/, 			ft_print_title.c ft_too_small.c ft_init.c ft_break_line.c  ft_break_lines.c  ft_clear.c  ft_debug.c  ft_get_win_size.c  ft_init_struct.c  ft_print_center.c ft_vertical_align.c) \
-				$(addprefix libft/, 		ft_numlen.c ft_atoi.c  ft_calloc.c  ft_isalnum.c  ft_isalpha.c  ft_isdigit.c  ft_isspace.c  ft_itoa.c  ft_putnbr_fd.c  ft_strdup.c  ft_strlcpy.c  ft_strlen.c  get_next_line.c  get_next_line_utils.c) \
+				$(addprefix libft/, 		ft_numlen.c ft_atoi.c  ft_calloc.c  ft_isalnum.c  ft_isalpha.c  ft_isdigit.c  ft_isspace.c  ft_itoa.c  ft_putnbr_fd.c  ft_strdup.c  ft_strlcpy.c  ft_strlen.c  get_next_line.c  get_next_line_utils.c ft_memset.c) \
 				$(addprefix menus/, 		ft_lost_menu.c ft_win_menu.c	ft_select_menu.c  ft_size_menu.c  ft_start_menu.c) \
 				$(addprefix tiles/,			ft_print_nb_ascii.c ft_print_tile_ascii.c))
 
