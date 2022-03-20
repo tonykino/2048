@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:18:12 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 12:57:21 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 14:30:36 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,12 @@ void print_tile_value(t_game *game, t_tile *tile)
 			ft_print_tile_ascii(game, tile);
 		else
 		{
-			mvprintw(	tile->line_idx * (game->board.tile_height +1) + game->board.tile_height / 2, \
-					tile->col_idx * (game->board.tile_width + 1) + game->board.tile_width / 2, \
-					ft_itoa(tile->value, buff));
+			int size = ft_numlen(tile->value);
+			int margin_top = (game->board.tile_height - 1) / 2;
+			int margin_left = (game->board.tile_width - ft_numlen(tile->value)) / 2 + 1;
+			mvprintw(	tile->line_idx * game->board.tile_height + margin_top + 1 + tile->line_idx, \
+						tile->col_idx * (game->board.tile_width + 1) + margin_left, \
+						ft_itoa(tile->value, buff));
 		}
 	}
 }
