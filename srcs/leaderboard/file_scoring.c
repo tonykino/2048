@@ -37,7 +37,7 @@ int get_scores_from_file(t_score **head)
 
 int put_score_to_file(t_score *head, char *pseudo)
 {
-	int fd = open("scores.txt", O_CREAT | O_TRUNC | O_WRONLY, S_IRWXO);
+	int fd = open("scores.txt", O_CREAT | O_TRUNC | O_WRONLY, S_IRWXU);
 	if (fd < 0)
 		return (ERROR_FD);
 	while(head)
@@ -143,7 +143,10 @@ void add_score(t_score *to_add, t_score **head)
 	if(!head)
 		return;
 	if (!*head)
+	{
 		*head = to_add;
+		return;
+	}
 	t_score *ptr_temp = *head;
 
 	if (to_add->score > (*head)->score)
@@ -165,7 +168,8 @@ void destroy_list(t_score **head)
 	while (*head)
 	{
 		ptr_temp = (*head)->next;
-		free((*head)->pseudo);
+		if ((*head)->pseudo)
+			free((*head)->pseudo);
 		free(*head);
 		*head = ptr_temp;
 	}
