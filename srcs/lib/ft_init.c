@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:17:18 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 19:30:25 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 20:18:50 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ void init_colors()
 	init_color(TILE_32, nrgb(247), nrgb(124), nrgb(95));
 	init_color(TILE_64, nrgb(247), nrgb(95), nrgb(59));
 	init_color(TILE_128, nrgb(237), nrgb(208), nrgb(115));
+	init_color(TILE_256, nrgb(237), nrgb(204), nrgb(98));
+	init_color(TILE_512, nrgb(237), nrgb(201), nrgb(80));
+	init_color(TILE_1024, nrgb(237), nrgb(197), nrgb(63));
+	init_color(TILE_2048, nrgb(237), nrgb(194), nrgb(46));
+	init_color(TILE_4096, nrgb(61), nrgb(59), nrgb(50));
 
 	init_pair(GLOBAL_PAIR, GLOBAL_FG, GLOBAL_BG);
 	init_pair(BORDER_PAIR, COLOR_BORDER, COLOR_BORDER);
@@ -58,6 +63,9 @@ void init_colors()
 	init_pair(VALUE128_PAIR, TILE_FG, TILE_128);
 	init_pair(VALUE256_PAIR, TILE_FG, TILE_256);
 	init_pair(VALUE512_PAIR, TILE_FG, TILE_512);
+	init_pair(VALUE1024_PAIR, TILE_FG, TILE_1024);
+	init_pair(VALUE2048_PAIR, TILE_FG, TILE_2048);
+	init_pair(VALUE4096_PAIR, TILE_FG, TILE_4096);
 }
 
 int ft_init(t_game *game)

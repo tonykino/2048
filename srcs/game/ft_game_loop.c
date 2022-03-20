@@ -46,6 +46,8 @@ void print_tile_value(t_game *game, t_tile *tile)
 
 int get_trailing_zeros_nb(int value)
 {
+	if (value > 2048)
+		return (VALUE4096_PAIR);
 	int ret = 1;
 	while (value > 1)
 	{

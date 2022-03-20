@@ -25,6 +25,7 @@
 #define TILE_256 20
 #define TILE_512 21
 #define TILE_1024 22
-
+#define TILE_2048 23
+#define TILE_4096 24
 
 #endif

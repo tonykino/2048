@@ -19,6 +19,7 @@
 #define VALUE512_PAIR	10
 #define VALUE1024_PAIR	11
 #define VALUE2048_PAIR	12
+#define VALUE4096_PAIR	13
 
 int ft_init_board(t_game *game);
 void update_board(t_game *game);

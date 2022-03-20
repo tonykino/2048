@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 05:01:17 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 17:15:20 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 20:20:31 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ static void _init_tile(t_tile *tile, int line, int col)
 int ft_init_board(t_game *game)
 {
 	game->board.tile_nb = game->board.col_nb * game->board.line_nb;
-	game->board.tiles = ft_calloc(game->board.line_nb, sizeof(t_tile *)); // Todo : Protéger les mallocs
+	game->board.tiles = ft_calloc(game->board.line_nb, sizeof(t_tile *));
 	if (!game->board.tiles)
 		return (0);
 	for (int i = 0; i < game->board.line_nb; i++)
 	{
-		game->board.tiles[i] = ft_calloc(game->board.col_nb, sizeof(t_tile)); // Todo : Protéger les mallocs
+		game->board.tiles[i] = ft_calloc(game->board.col_nb, sizeof(t_tile));
 		if (!game->board.tiles[i])
 			return (0);
 	}
