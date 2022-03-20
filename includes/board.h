@@ -5,18 +5,19 @@
 #include <stdbool.h>
 #include "struct.h"
 
-#define BORDER_PAIR		1
+#define BORDER_PAIR		100
+#define VALUE0_PAIR		1
 #define VALUE2_PAIR		2
-#define VALUE4_PAIR		4
-#define VALUE8_PAIR		8
-#define VALUE16_PAIR	16
-#define VALUE32_PAIR	32
-#define VALUE64_PAIR	64
-#define VALUE128_PAIR	128
-#define VALUE256_PAIR	256
-#define VALUE512_PAIR	512
-#define VALUE1024_PAIR	1024
-#define VALUE2048_PAIR	2048
+#define VALUE4_PAIR		3
+#define VALUE8_PAIR		4
+#define VALUE16_PAIR	5
+#define VALUE32_PAIR	6
+#define VALUE64_PAIR	7
+#define VALUE128_PAIR	8
+#define VALUE256_PAIR	9
+#define VALUE512_PAIR	10
+#define VALUE1024_PAIR	11
+#define VALUE2048_PAIR	12
 
 int ft_init_board(t_game *game);
 void update_board(t_game *game);
