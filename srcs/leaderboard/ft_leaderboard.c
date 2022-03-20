@@ -6,7 +6,7 @@
 /*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:04:00 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 13:06:30 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 17:12:38 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_leaderboard(t_game *game)
 	game->key = 0;
 	game->selected_menu_pos = 0;
 	
-	while (1)
+	while (signal_global)
 	{
 		i = 0;
 		ft_clear(game); // My own clear function to also clear other variables (like cursor position)
