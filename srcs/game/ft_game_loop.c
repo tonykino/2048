@@ -57,7 +57,6 @@ int get_trailing_zeros_nb(int value)
 
 void print_tile_content(t_game *game, t_tile *tile)
 {
-
 	attron(COLOR_PAIR(get_trailing_zeros_nb(tile->value)));
 	attron(A_BOLD);
 	print_tile_background(game, tile);
@@ -85,6 +84,8 @@ bool board_is_printable(t_game *game)
 
 void print_metadata(t_game *game)
 {
+	attron(COLOR_PAIR(GLOBAL_PAIR));
+	attron(A_BOLD);
 	char buff[11] = "";
 	ft_print_title((COLS - 16) / 2, 0);
 	if (COLS < 60)
@@ -97,6 +98,8 @@ void print_metadata(t_game *game)
 		mvprintw(1, 2, "Player: %s", game->pseudo);
 		mvprintw(2, 2, "Score: %s", ft_itoa(game->board.score, buff));
 	}
+	attroff(A_BOLD);
+	attroff(COLOR_PAIR(GLOBAL_PAIR));
 }
 
 int	ft_game_loop(t_game *game)

@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include "struct.h"
 
+#define GLOBAL_PAIR		99
 #define BORDER_PAIR		100
 #define VALUE0_PAIR		1
 #define VALUE2_PAIR		2

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:17:18 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 18:57:44 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 19:30:25 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void init_colors()
 	init_color(TILE_64, nrgb(247), nrgb(95), nrgb(59));
 	init_color(TILE_128, nrgb(237), nrgb(208), nrgb(115));
 
+	init_pair(GLOBAL_PAIR, GLOBAL_FG, GLOBAL_BG);
 	init_pair(BORDER_PAIR, COLOR_BORDER, COLOR_BORDER);
 	init_pair(VALUE0_PAIR, TILE_BG, TILE_BG);
 	init_pair(VALUE2_PAIR, GLOBAL_FG, TILE_2);
