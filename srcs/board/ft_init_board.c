@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 05:01:17 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 16:07:18 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 17:15:20 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int ft_init_board(t_game *game)
 		}
 	}
 	game->board.is_printable = false;
+	game->board.board_offset = 6;
 	return (1);
 }

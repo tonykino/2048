@@ -34,6 +34,7 @@ typedef struct s_board {
 	bool has_changed;
 	int	score;
 	bool is_printable;
+	int board_offset;
 	enum_game_status game_status;
 	t_tile **tiles;
 } t_board;

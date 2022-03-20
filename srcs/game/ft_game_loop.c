@@ -19,7 +19,7 @@ void print_tile_background(t_game *game, t_tile *tile)
 {
 	for (int line = 0; line < game->board.tile_height; line++)
 	{
-		move(	tile->line_idx * (game->board.tile_height + 1) + 1 + line, \
+		move(	tile->line_idx * (game->board.tile_height + 1) + 1 + game->board.board_offset + line, \
 				tile->col_idx * (game->board.tile_width + 1) + 1);
 		hline(' ', game->board.tile_width);
 	}
@@ -37,7 +37,7 @@ void print_tile_value(t_game *game, t_tile *tile)
 			int size = ft_numlen(tile->value);
 			int margin_top = (game->board.tile_height - 1) / 2;
 			int margin_left = (game->board.tile_width - ft_numlen(tile->value)) / 2 + 1;
-			mvprintw(	tile->line_idx * game->board.tile_height + margin_top + 1 + tile->line_idx, \
+			mvprintw(	tile->line_idx * game->board.tile_height + margin_top + 1 + game->board.board_offset + tile->line_idx, \
 						tile->col_idx * (game->board.tile_width + 1) + margin_left, \
 						ft_itoa(tile->value, buff));
 		}
@@ -67,8 +67,24 @@ void print_tiles_content(t_game *game)
 
 bool board_is_printable(t_game *game)
 {
-	return ((COLS > (ft_numlen(game->max_size_tile) + 1) * game->game_size + 1) \
-			&& (LINES > (2 * game->game_size) + 1)); 
+	return ((COLS > (ft_numlen(game->max_size_tile) + 3) * game->game_size + 1) \
+			&& (LINES > (2 * game->game_size) + 1 + game->board.board_offset)); 
+}
+
+void print_metadata(t_game *game)
+{
+	char buff[11] = "";
+	ft_print_title((COLS - 16) / 2, 0);
+	if (COLS < 60)
+	{
+		mvprintw(6, 2, "Player: %s", game->pseudo);
+		mvprintw(7, 2, "Score: %s", ft_itoa(game->board.score, buff));
+	}
+	else
+	{
+		mvprintw(1, 2, "Player: %s", game->pseudo);
+		mvprintw(2, 2, "Score: %s", ft_itoa(game->board.score, buff));
+	}
 }
 
 int	ft_game_loop(t_game *game)
@@ -105,6 +121,7 @@ int	ft_game_loop(t_game *game)
 		{
 			print_board(game);
 			print_tiles_content(game);
+			print_metadata(game);
 		}
 		else
 		{

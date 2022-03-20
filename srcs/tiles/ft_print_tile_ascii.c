@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 07:37:15 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 14:12:37 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 17:16:37 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_print_tile_ascii(t_game *game, t_tile *tile)
 		value = value / 10;
 		ft_print_nb_ascii(nb, \
 			((tile->col_idx + 1) * game->board.tile_width) - (margin_left + ((i + 1) * 3)) - (1 * i) + (tile->col_idx + 1), \
-			((tile->line_idx * game->board.tile_height) + margin_top) + (1 + tile->line_idx) \
+			((tile->line_idx * game->board.tile_height) + margin_top) + (1 + tile->line_idx) + game->board.board_offset \
 		);
 	}
 }
