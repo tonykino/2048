@@ -10,6 +10,8 @@
 #include "2048.h"
 #include "file_scoring.h"
 
+
+int signal_global;
 // Test movement with gcc main.c board.c ft_calloc.c randomizer.c board_movement.c vector_conversions.c -lncurses -o test && ./test
 
 int free_all(t_game *game, int error)
@@ -27,6 +29,7 @@ int free_all(t_game *game, int error)
 		put_score_to_file(game->scores, game->pseudo);
 	endwin();
 	delwin(stdscr);
+	nocbreak();
 	destroy_list(&game->scores);
 	return (0);
 }

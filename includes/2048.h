@@ -6,7 +6,7 @@
 /*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:29:42 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 13:10:10 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 16:39:50 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // # include <stdio.h>, pas besoin de l'inclure, elle l'est implicitement par ncurses.h
 # include <ncurses.h>
 # include <stdlib.h>
+# include <signal.h>
 # include "libft.h"
 # include "struct.h"
 # include "file_scoring.h"
@@ -27,7 +28,7 @@
 # define RIGHT 261
 # define ENTER 10
 
-
+extern int signal_global;
 /*
 	MENUS
 */
@@ -77,5 +78,8 @@ int	ft_game_loop(t_game *game);
 void	ft_too_small(t_game *game);
 void	ft_print_title(int x, int y);
 void	ft_print_nb_ascii(int nb, int x, int y);
+
+// OTHERS
+void signal_handler(int signum);
 
 #endif
