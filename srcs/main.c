@@ -9,41 +9,48 @@
 #include "check_board_status.h"
 #include "2048.h"
 
-void print_tile_background(t_board *board, t_tile *tile)
+void print_tile_background(t_game *game, t_tile *tile)
 {
-	for (int line = 0; line < board->tile_height; line++)
+	for (int line = 0; line < game->board.tile_height; line++)
 	{
-		move(	tile->line_idx * (board->tile_height + 1) + 1 + line, \
-				tile->col_idx * (board->tile_width + 1) + 1);
-		hline(' ', board->tile_width);
+		move(	tile->line_idx * (game->board.tile_height + 1) + 1 + line, \
+				tile->col_idx * (game->board.tile_width + 1) + 1);
+		hline(' ', game->board.tile_width);
 	}
 }
 
-void print_tile_value(t_board *board, t_tile *tile)
+void print_tile_value(t_game *game, t_tile *tile)
 {
 	if (tile->value != 0)
-		mvprintw(	tile->line_idx * (board->tile_height +1) + board->tile_height / 2, \
-					tile->col_idx * (board->tile_width + 1) + board->tile_width / 2, \
+	{
+		if (ft_is_ascii_possible(game))
+			ft_print_tile_ascii(game, tile);
+		else
+		{
+			mvprintw(	tile->line_idx * (game->board.tile_height +1) + game->board.tile_height / 2, \
+					tile->col_idx * (game->board.tile_width + 1) + game->board.tile_width / 2, \
 					ft_itoa(tile->value));
+		}
+	}
 }
 
-void print_tile_content(t_board *board, t_tile *tile)
+void print_tile_content(t_game *game, t_tile *tile)
 {
 	attron(COLOR_PAIR(tile->value));
 	attron(A_BOLD);
-	print_tile_background(board, tile);
-	print_tile_value(board, tile);
+	print_tile_background(game, tile);
+	print_tile_value(game, tile);
 	attroff(A_BOLD);
 	attroff(COLOR_PAIR(tile->value));
 }
 
-void print_tiles_content(t_board *board)
+void print_tiles_content(t_game *game)
 {
-	for (int line = 0; line < board->line_nb; line++)
+	for (int line = 0; line < game->board.line_nb; line++)
 	{
-		for (int col = 0; col < board->col_nb; col++)
+		for (int col = 0; col < game->board.col_nb; col++)
 		{
-			print_tile_content(board, &board->tiles[line][col]);
+			print_tile_content(game, &game->board.tiles[line][col]);
 		}
 	}
 }
@@ -86,75 +93,10 @@ void handle_arrow(int direction, t_board *board)
 int main()
 {
 	t_game game;
-	t_board board = game.board;
-    WINDOW *game_window;
-    char msg[40];
-	
-	srand(time(NULL));
-	// These functions are necessary to get character-at-a-time input
-    initscr(); // Initialize curses library
-	noecho();
-	curs_set(0); // Make the cursor invisible
-	cbreak();  // Description of cbreak, noecho and nonl : https://manpages.debian.org/bullseye/ncurses-doc/nonl.3ncurses.en.html
-	// game_window = newwin(LINES, COLS, 0, 0);
-	keypad(stdscr, TRUE); // enable arrow keys // necessary ?? A priori oui sinon les fleches envoient 3 signaux
-	
-	print_menu(&game);
-	
-	// nonl(); // Remove to permit enter
-	init_board(&board);
 
-	if (has_colors() == FALSE) {
-    	endwin();
-    	printf("Your terminal does not support color\n");
-    	exit(1);
-    }
-
-	init_colors();
-	generate_random_number_in_random_empty_tile(&board);
-	generate_random_number_in_random_empty_tile(&board);
-
-	int c = 0; // à retenir qu'il est pas init
-    while(1) {
-        clear();
-		update_board(&board);
-
-		switch (c)
-		{
-		case 410: // resize window
-			break;
-		case KEY_UP:
-		case KEY_DOWN:
-		case KEY_LEFT:
-		case KEY_RIGHT:
-			handle_arrow(c, &board);
-			break;
-		default:
-			// mvprintw(10, 1, "Character pressed is = %d Hopefully it can be printed as '%c'", c, c);
-			break;
-		}
-
-		print_board(&board);
-		print_tiles_content(&board);
-
-		// sprintf(msg, "Game status = %d", board.game_status);
-        // mvprintw(1, 1, msg); // Message de debug temporaire	
-		// sprintf(msg, "Tile_width = %d", board.tile_width);
-        // mvprintw(1, 1, msg); // Message de debug temporaire	
-		// sprintf(msg, "Tile_heigth = %d", board.tile_height);
-        // mvprintw(2, 1, msg); // Message de debug temporaire	
-		// sprintf(msg, "COLS = %d, LINES = %d", COLS, LINES);
-        // mvprintw(3, 1, msg); // Message de debug temporaire
-		// sprintf(msg, "board has changed ? %d", board.has_changed);
-        // mvprintw(4, 1, msg); // Message de debug temporaire
-
-		refresh();
-		c = getch();
-    }
-    endwin();
+	ft_init(&game); // Init everything
+	ft_start_menu(&game); // Launch the start menu
     
-    free(game_window);
-	// free_board(&board);
-    
+	endwin();
     return 0;
 }

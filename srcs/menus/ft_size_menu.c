@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_size_menu.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 18:01:50 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 02:39:13 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 08:52:10 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,69 +21,73 @@ void	ft_size_menu(t_game *game)
 		" BACK "
 	};
 	int	menu_size = sizeof(menu) / sizeof(char *);
-	int menu_height = 3 + menu_size; // int = nb lines hard coded in the print of the menu
-	t_vars *vars = &game->vars;
+	int menu_height = 8 + menu_size; // int = nb lines hard coded in the print of the menu
+	int menu_width = 10; // Used to center menu
 
-	vars->key = 0;
-	vars->selected_menu_pos = 0;
+	game->key = 0;
+	game->selected_menu_pos = 0;
 	
 	while (1)
 	{
 		i = 0;
-		ft_clear(vars); // My own clear function to also clear other variables (like cursor position)
+		ft_clear(game); // My own clear function to also clear other variables (like cursor position)
+		ft_get_win_size(game);
 
 		/*
 			MENU LOGIC
 		*/
-		if (ft_is_esc_key(vars))
+		if (ft_is_esc_key(game))
 		{
-			vars->selected_menu_pos = -1;
+			game->selected_menu_pos = -1; // Otherwise it would be 0 and just relaunch the menu
 			break;
 		}
-		else if (ft_is_up_key(vars))
-			vars->selected_menu_pos = ft_select_menu(-1, vars->selected_menu_pos, menu_size);
-		else if (ft_is_down_key(vars))
-			vars->selected_menu_pos = ft_select_menu(1, vars->selected_menu_pos, menu_size);
-		else if (ft_is_enter_key(vars))
+		else if (ft_is_up_key(game))
+			game->selected_menu_pos = ft_select_menu(-1, game->selected_menu_pos, menu_size);
+		else if (ft_is_down_key(game))
+			game->selected_menu_pos = ft_select_menu(1, game->selected_menu_pos, menu_size);
+		else if (ft_is_enter_key(game))
 			break;
 
-		/*
-			ACTUALLY PRINT THE MENU
-		*/
-		//ft_debug(vars);
-		ft_get_win_size(vars);
-		ft_vertical_align(vars, menu_height);
-		ft_print_center(vars, "2048");
-		ft_break_lines(vars, 2);
-		for (i = 0; i < menu_size; i++)
+		if (game->nb_char_cols < menu_width || game->nb_char_lines < menu_height)
+			ft_too_small(game); // If window is to small to display
+		else
 		{
-			if (i == 2)
-				ft_break_line(vars);
-			if (vars->selected_menu_pos == i)
-				attron(A_REVERSE);
-			ft_print_center(vars, menu[i]);
-			if (vars->selected_menu_pos == i)
-				attroff(A_REVERSE);
-			ft_break_line(vars);
+			// Actually print the menu
+			ft_vertical_align(game, menu_height);
+			ft_print_title((game->nb_char_cols - (4 * 4)) / 2, game->actual_cursor_line);
+			game->actual_cursor_line += 5;
+			ft_break_lines(game, 2);
+			for (i = 0; i < menu_size; i++)
+			{
+				if (i == 2)
+					ft_break_line(game);
+				if (game->selected_menu_pos == i)
+					attron(A_REVERSE);
+				ft_print_center(game, menu[i]);
+				if (game->selected_menu_pos == i)
+					attroff(A_REVERSE);
+				ft_break_line(game);
+			}
 		}
+
 		refresh();
-		vars->key = getch();
+		game->key = getch();
 	}
 
-	if (vars->selected_menu_pos == 0) // 4 X 4
+	if (game->selected_menu_pos == 0) // 4 X 4
 	{
-		vars->game_size = 4;
+		game->game_size = 4;
 		game->board.line_nb = 4;
 		game->board.col_nb = 4;
-		// ft_launch_game(vars);
+		ft_launch_game(game);
 	}
-	else if (vars->selected_menu_pos == 1) // 5 X 5
+	else if (game->selected_menu_pos == 1) // 5 X 5
 	{
+		game->game_size = 5;
 		game->board.line_nb = 5;
 		game->board.col_nb = 5;
-		vars->game_size = 5;
-		// ft_launch_game(vars);
+		ft_launch_game(game);
 	}
-	else if (vars->selected_menu_pos == 2) // Back
+	else if (game->selected_menu_pos == 2) // Back
 		ft_start_menu(game);
 }

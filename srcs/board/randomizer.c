@@ -1,31 +1,31 @@
 #include "randomizer.h"
 
-static int _get_empty_tile_nb(t_board *board)
+static int _get_empty_tile_nb(t_game *game)
 {
 	int empty_tile_nb = 0;
 
-	for (int line = 0; line < board->line_nb; line++)
+	for (int line = 0; line < game->board.line_nb; line++)
 	{
-		for (int col = 0; col < board->col_nb; col++)
+		for (int col = 0; col < game->board.col_nb; col++)
 		{
-			if (board->tiles[line][col].value == 0)
+			if (game->board.tiles[line][col].value == 0)
 				empty_tile_nb++;
 		}
 	}
 	return empty_tile_nb;
 }
 
-static t_tile *_get_tile_to_fill(t_board *board, int rand_nb)
+static t_tile *_get_tile_to_fill(t_game *game, int rand_nb)
 {
 	t_tile *tile_to_fill = NULL;
 	
-	for (int line = 0; line < board->line_nb; line++)
+	for (int line = 0; line < game->board.line_nb; line++)
 	{
-		for (int col = 0; col < board->col_nb; col++)
+		for (int col = 0; col < game->board.col_nb; col++)
 		{
-			if (board->tiles[line][col].value == 0 && rand_nb >= 0)
+			if (game->board.tiles[line][col].value == 0 && rand_nb >= 0)
 			{
-				tile_to_fill = &board->tiles[line][col];
+				tile_to_fill = &game->board.tiles[line][col];
 				rand_nb--;
 			}
 		}
@@ -42,11 +42,11 @@ static int _generate_random_valid_number(void)
 	return rand_value;
 }
 
-void generate_random_number_in_random_empty_tile(t_board *board)
+void generate_random_number_in_random_empty_tile(t_game *game)
 {
     char msg[80];
 
-	int empty_tile_nb = _get_empty_tile_nb(board);
+	int empty_tile_nb = _get_empty_tile_nb(game);
 	if (empty_tile_nb == 0)
 	{
 		// sprintf(msg, "Error : no empty tile available"); 
@@ -54,7 +54,7 @@ void generate_random_number_in_random_empty_tile(t_board *board)
 		return ;
 	}
 	int rand_nb = empty_tile_nb * ((float)rand())/RAND_MAX;
-	t_tile *tile_to_fill = _get_tile_to_fill(board, rand_nb);
+	t_tile *tile_to_fill = _get_tile_to_fill(game, rand_nb);
 	if (tile_to_fill == NULL)
 	{
 		// sprintf(msg, "Error : tile to fill is NULL (rand_nb = %d)", rand_nb);

@@ -6,23 +6,29 @@
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:57:53 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 01:14:56 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/20 06:25:13 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_launch_game(t_vars *vars)
+void	ft_launch_game(t_game *game)
 {
+    char msg[40];
 	clear();
-	if (vars->game_size == 4)
-		printw("4 X 4 Game");
-	else if (vars->game_size == 5)
-		printw("5 X 5 Game");
-	refresh();
 
-	while(1)
-	{
-		//test	
+	// nonl(); // Remove to permit enter
+	ft_init_board(game);
+
+	if (has_colors() == FALSE) {
+		endwin();
+		printf("Your terminal does not support color\n");
+		exit(1); // ??????? C'est pas interdit ?
 	}
+
+	init_colors();
+	generate_random_number_in_random_empty_tile(game);
+	generate_random_number_in_random_empty_tile(game);
+
+	ft_game_loop(game); // Le mettre dans une fonction séparée permet de relancer la loop sans ecraser la partie en cours
 }

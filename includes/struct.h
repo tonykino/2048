@@ -3,16 +3,6 @@
 
 #include <stdbool.h>
 
-typedef	struct s_vars
-{
-	int		nb_char_lines;
-	int		nb_char_cols;
-	int		actual_cursor_line;
-	int		key;
-	int		selected_menu_pos;
-	int		game_size;
-}	t_vars;
-
 typedef struct s_tile {
 	int value;
 	int line_idx;
@@ -42,7 +32,13 @@ typedef struct s_board {
 
 typedef struct s_game {
 	t_board board;
-	t_vars  vars;
+	int		nb_char_lines;
+	int		nb_char_cols;
+	int		actual_cursor_line;
+	int		key;
+	int		selected_menu_pos;
+	int		game_size;
+	int		max_size_tile;
 } t_game;
 
 #endif

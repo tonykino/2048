@@ -41,7 +41,7 @@ t_vector enum_to_vector(int direction)
 }
 
 //fonction qui donne les coordonnées de départ du check en fonction de la direction
-t_vector get_start(int direction, t_board * board)
+t_vector get_start(int direction, t_game *game)
 {
 	t_vector ret;
 	switch (direction)
@@ -55,7 +55,7 @@ t_vector get_start(int direction, t_board * board)
 		case KEY_DOWN:
 		{
 			ret.x = 0;
-			ret.y = board->line_nb - 1;
+			ret.y = game->board.line_nb - 1;
 			break;
 		}
 		case KEY_LEFT:
@@ -66,7 +66,7 @@ t_vector get_start(int direction, t_board * board)
 		}
 		case KEY_RIGHT:
 		{
-			ret.x = board->col_nb - 1;
+			ret.x = game->board.col_nb - 1;
 			ret.y = 0;
 			break;
 		}

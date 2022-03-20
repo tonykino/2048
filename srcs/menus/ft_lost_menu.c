@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_start_menu.c                                    :+:      :+:    :+:   */
+/*   ft_lost_menu.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 13:06:09 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 08:51:24 by nlafarge         ###   ########.fr       */
+/*   Created: 2022/03/20 06:52:25 by nlafarge          #+#    #+#             */
+/*   Updated: 2022/03/20 06:57:02 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_start_menu(t_game *game)
+void	ft_lost_menu(t_game *game)
 {
 	int	i;
 	char *menu[] = {
-		" PLAY ",
-		" TOP SCORES ",
+		" SAVE ",
 		" EXIT "
 	};
 	int	menu_size = sizeof(menu) / sizeof(char *);
-	int menu_height = 8 + menu_size; // int = nb lines hard coded in the print of the menu
-	int	menu_width = 13; // Used to center the menu
+	int menu_height = 7 + menu_size; // int = nb lines hard coded in the print of the menu
+	int	menu_width = 10; // Used to center the menu
 
 	game->key = 0;
 	game->selected_menu_pos = 0;
@@ -54,13 +53,15 @@ void	ft_start_menu(t_game *game)
 		{
 			// Actually print the menu
 			ft_vertical_align(game, menu_height);
-			//ft_print_center(game, "2048");
-			ft_print_title((game->nb_char_cols - (4 * 4)) / 2, game->actual_cursor_line);
-			game->actual_cursor_line += 5;
+			ft_print_center(game, "YOU LOST ...");
+			ft_break_lines(game, 2);
+			ft_print_center(game, "YOUR SCORE :");
+			ft_break_line(game);
+			ft_print_center(game, ft_itoa(game->board.score));
 			ft_break_lines(game, 2);
 			for (i = 0; i < menu_size; i++)
 			{
-				if (i == 2)
+				if (i == 1)
 					ft_break_line(game);
 				if (game->selected_menu_pos == i)
 					attron(A_REVERSE);
@@ -75,8 +76,12 @@ void	ft_start_menu(t_game *game)
 		game->key = getch();
 	}
 
-	if (game->selected_menu_pos == 0) // Play
-		ft_size_menu(game);
-	else if (game->selected_menu_pos == 1) // Leaderboard
-		ft_leaderboard(game);
+	if (game->selected_menu_pos == 0) // Save
+	{
+		clear();
+		printw("SAVE");
+		refresh();
+		while (1)
+		{}
+	}
 }

@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_get_max_size_tile.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 01:54:55 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 04:32:19 by nlafarge         ###   ########.fr       */
+/*   Created: 2022/03/20 07:13:27 by nlafarge          #+#    #+#             */
+/*   Updated: 2022/03/20 07:21:05 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_init_struct(t_game *game)
+void	ft_get_max_size_tile(t_game *game)
 {
-	game->nb_char_lines = 0;
-	game->nb_char_cols = 0;
-	game->key = 0;
-	game->actual_cursor_line = 0;
-	game->selected_menu_pos = 0;
-	game->game_size = 0;
+	game->max_size_tile = 0;
+	for (int y = 0; y < game->board.line_nb; y++)
+	{
+		for (int x = 0; x < game->board.col_nb; x++)
+		{
+			if (game->board.tiles[y][x].value > game->max_size_tile)
+				game->max_size_tile = game->board.tiles[y][x].value;
+		}
+	}
 }

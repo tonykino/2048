@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_win_size.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 13:56:05 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 22:37:37 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 04:32:28 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_get_win_size(t_vars *vars)
+void	ft_get_win_size(t_game *game)
 {
-	vars->nb_char_cols = COLS;
-	vars->nb_char_lines = LINES;
+	game->nb_char_cols = COLS;
+	game->nb_char_lines = LINES;
 }

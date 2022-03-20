@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_break_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 15:31:10 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 22:37:37 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 04:32:59 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_break_line(t_vars *vars)
+void	ft_break_line(t_game *game)
 {
-	vars->actual_cursor_line++;
+	game->actual_cursor_line++;
 }

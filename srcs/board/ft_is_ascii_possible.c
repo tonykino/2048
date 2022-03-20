@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_is_ascii_possible.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 01:54:55 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 04:32:19 by nlafarge         ###   ########.fr       */
+/*   Created: 2022/03/20 07:21:27 by nlafarge          #+#    #+#             */
+/*   Updated: 2022/03/20 07:28:17 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_init_struct(t_game *game)
+int	ft_is_ascii_possible(t_game *game)
 {
-	game->nb_char_lines = 0;
-	game->nb_char_cols = 0;
-	game->key = 0;
-	game->actual_cursor_line = 0;
-	game->selected_menu_pos = 0;
-	game->game_size = 0;
+	int required_width = 3 * ft_numlen(game->max_size_tile);
+	int required_height = 5;
+
+	if (game->board.tile_width 	>= required_width && game->board.tile_height >= required_height)
+		return (1);
+	else
+		return (0);
 }

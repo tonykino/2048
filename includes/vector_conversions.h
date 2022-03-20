@@ -8,6 +8,6 @@
 //pour parcourir le tableau
 t_vector enum_to_vector(int direction);
 //fonction qui donne les coordonnées de départ du check en fonction de la direction
-t_vector get_start(int direction, t_board * board);
+t_vector get_start(int direction, t_game *game);
 
 #endif

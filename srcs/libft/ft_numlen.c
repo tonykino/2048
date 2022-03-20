@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 01:54:55 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 04:32:19 by nlafarge         ###   ########.fr       */
+/*   Created: 2022/03/20 07:22:36 by nlafarge          #+#    #+#             */
+/*   Updated: 2022/03/20 07:23:31 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "2048.h"
+#include "libft.h"
 
-void	ft_init_struct(t_game *game)
+int		ft_numlen(long nb)
 {
-	game->nb_char_lines = 0;
-	game->nb_char_cols = 0;
-	game->key = 0;
-	game->actual_cursor_line = 0;
-	game->selected_menu_pos = 0;
-	game->game_size = 0;
+	int len;
+
+	len = 0;
+	if (nb < 0)
+	{
+		nb = nb * -1;
+		len++;
+	}
+	while (nb > 0)
+	{
+		nb = nb / 10;
+		len++;
+	}
+	return (len);
 }

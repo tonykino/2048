@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2048.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:29:42 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 02:41:08 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 04:34:15 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 // # include <stdio.h>, pas besoin de l'inclure, elle l'est implicitement par ncurses.h
 # include <ncurses.h>
 # include <stdlib.h>
-#include "libft.h"
-#include "struct.h"
+# include "libft.h"
+# include "struct.h"
 
 # define ESC 27
 # define UP 259
@@ -37,17 +37,17 @@ int		ft_select_menu(int move, int current_pos, int menu_size);
 /*
 	CORE
 */
-int		ft_is_left_key(t_vars *vars);
-int		ft_is_right_key(t_vars *vars);
-int		ft_is_up_key(t_vars *vars);
-int		ft_is_down_key(t_vars *vars);
-int		ft_is_enter_key(t_vars *vars);
-int		ft_is_esc_key(t_vars *vars);
+int		ft_is_left_key(t_game *game);
+int		ft_is_right_key(t_game *game);
+int		ft_is_up_key(t_game *game);
+int		ft_is_down_key(t_game *game);
+int		ft_is_enter_key(t_game *game);
+int		ft_is_esc_key(t_game *game);
 
 /*
 	GAME
 */
-void	ft_launch_game(t_vars *vars);
+void	ft_launch_game(t_game *game);
 
 /*
 	LEADERBOARD
@@ -57,14 +57,14 @@ void	ft_leaderboard(t_game *game);
 /*
 	LIB
 */
-void	ft_debug(t_vars *vars);
-void	ft_init_struct(t_vars *vars);
-void	ft_get_win_size(t_vars *vars);
-void	ft_break_line(t_vars *vars);
-void	ft_break_lines(t_vars *vars, int nb_breaks);
-void	ft_clear(t_vars *vars);
-void	ft_vertical_align(t_vars *vars, int element_height);
-void	ft_print_center(t_vars *vars, char *str);
+void	ft_debug(t_game *game);
+void	ft_init_struct(t_game *game);
+void	ft_get_win_size(t_game *game);
+void	ft_break_line(t_game *game);
+void	ft_break_lines(t_game *game, int nb_breaks);
+void	ft_clear(t_game *game);
+void	ft_vertical_align(t_game *game, int element_height);
+void	ft_print_center(t_game *game, char *str);
 void	print_menu(t_game *game);
 
 #endif

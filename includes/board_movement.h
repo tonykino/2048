@@ -27,18 +27,18 @@ typedef struct s_vector
 //fonction qui prends la position d'un carré et sa direction et qui va checker
 //si ce carré peut merge avec l'obstacle adjacent dans sa direction
 //si possible elle va merge les deux
-void try_merge(t_vector position, t_vector direction, t_board *board);
+void try_merge(t_vector position, t_vector direction, t_game *game);
 /***********************************************************************/
 /*																	   */
 /*					BOARD AND TILE MOVEMENT							   */
 /*																	   */
 /***********************************************************************/
 
-void move_tile_vertical(t_vector position, t_vector vector_dir, t_board *board);
-void move_board_vertical(int direction, t_board *board);
-void move_tile_horizontal(t_vector position, t_vector vector_dir, t_board *board);
-void move_board_horizontal(int direction, t_board *board);
+void move_tile_vertical(t_vector position, t_vector vector_dir, t_game *game);
+void move_board_vertical(int direction, t_game *game);
+void move_tile_horizontal(t_vector position, t_vector vector_dir, t_game *game);
+void move_board_horizontal(int direction, t_game *game);
 
 //fonction à appeler pour initer un move dans une direction
-void board_move(int direction, t_board *board);
+void board_move(int direction, t_game *game);
 #endif

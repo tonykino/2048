@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_clear.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 15:47:38 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 22:37:37 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 04:32:44 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_clear(t_vars *vars)
+void	ft_clear(t_game *game)
 {
 	clear();
-	vars->actual_cursor_line = 0;
+	game->actual_cursor_line = 0;
 }
