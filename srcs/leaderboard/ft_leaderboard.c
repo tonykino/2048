@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_leaderboard.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
+/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:04:00 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 17:48:38 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 19:22:51 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	ft_leaderboard(t_game *game)
 	int	i;
 	char buff_itoa[30] = ""; // j'ai fait une fonction itoa custom pour ne plus avoir de malloc
 
-	t_score *scores = NULL;
-	int res = get_scores_from_file(&scores);
-	if (res != SUCCESS)
-		return (0);
+	t_score *scores = game->scores;
 
 	char *menu[] = {
 		" BACK "
