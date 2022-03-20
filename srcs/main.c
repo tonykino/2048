@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 			game.pseudo = argv[1];
 		else
 		{
-			write(1, "Wrong pseudo format, onyl 20 alphanum chars\n", 44);
+			write(1, "Wrong pseudo format, only 20 alphanum chars\n", 44);
 			return (1);
 		}
 	}
