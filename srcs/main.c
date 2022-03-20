@@ -43,17 +43,24 @@ int free_all(t_game *game, int error)
 		free(game->board.tiles);
 	}
 	if (!error)
-		put_score_to_file(game->scores);
-	// if (!error && put_score_to_file(game->scores) == ERROR_FD)
-		// print_error_msg(ERROR_FD);
+		put_score_to_file(game->scores, game->pseudo);
 	destroy_list(&game->scores);
+	return (0);
 }
 
-int main()
+int main(int argc, char **argv)
 {
 	int ret;
 	t_game game;
 	ft_memset(&game, '\0', sizeof(t_game));
+
+	if (argc != 2)
+	{
+		write(1, "Usage : ./2048 [pseudo]\n", 24);
+		return (1);
+	}
+	else
+		game.pseudo = argv[1];
 
 	if ((ret = ft_init(&game)) != SUCCESS) // Init everything
 	{

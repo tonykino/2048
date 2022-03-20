@@ -6,7 +6,7 @@
 /*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:29:42 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 13:01:28 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 13:10:10 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include "libft.h"
 # include "struct.h"
+# include "file_scoring.h"
 
 # define ESC 27
 # define UP 259

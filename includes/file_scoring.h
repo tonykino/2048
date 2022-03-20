@@ -19,7 +19,7 @@
 int		get_scores_from_file(t_score **head);
 
 // fonction qui ecris les scores dans un fichier, peut retourner SUCESS ou ERROR_FD
-int		put_score_to_file(t_score *head);
+int	put_score_to_file(t_score *head, char *pseudo);
 
 //créé un maillon score à partir d'un int et d'une string
 t_score	*create_score(int score, char *pseudo);

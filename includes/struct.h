@@ -46,6 +46,7 @@ typedef struct s_game {
 	int		game_size;
 	int		max_size_tile;
 	t_score *scores;
+	char	*pseudo;
 } t_game;
 
 #endif

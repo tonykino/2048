@@ -35,16 +35,24 @@ int get_scores_from_file(t_score **head)
 	return (SUCCESS);
 }
 
-int put_score_to_file(t_score *head)
+int put_score_to_file(t_score *head, char *pseudo)
 {
 	int fd = open("scores.txt", O_TRUNC | O_WRONLY);
 	if (fd < 0)
 		return (ERROR_FD);
 	while(head)
 	{
-		write(fd, head->pseudo, ft_strlen(head->pseudo));
-		write(fd, ":", 1);
-		ft_putnbr_fd(head->score, fd);
+		if (!head->pseudo)
+		{
+			write(fd, pseudo, ft_strlen(pseudo));
+			write(fd, ":", 1);
+			ft_putnbr_fd(head->score, fd);
+		}
+		else //just magic ask Auguste if you need to understand
+		{
+			head->pseudo[ft_strlen(head->pseudo)] = ':';
+			write(fd, head->pseudo, ft_strlen(head->pseudo));
+		}
 		write(fd, "\n", 1);
 		head = head->next;
 	}

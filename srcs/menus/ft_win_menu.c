@@ -6,7 +6,7 @@
 /*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 05:44:28 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 12:04:40 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 12:46:17 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,13 @@ int	ft_win_menu(t_game *game)
 		refresh();
 		while (1)
 		{}
+	}
+	if (game->selected_menu_pos == 2 || game->selected_menu_pos == -1) // Exit
+	{
+		t_score *score = create_score(game->board.score, NULL);
+		if (!score)
+			return 0;
+		add_score(score, &game->scores);
 	}
 	return (1);
 }
