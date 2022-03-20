@@ -6,7 +6,7 @@
 /*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:17:18 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 16:40:41 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 17:18:59 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	ft_init(t_game *game)
 	cbreak();  // Description of cbreak, noecho and nonl : https://manpages.debian.org/bullseye/ncurses-doc/nonl.3ncurses.en.html
 	keypad(stdscr, TRUE); // enable arrow keys // necessary ?? A priori oui sinon les fleches envoient 3 signaux
 	signal(SIGINT, signal_handler);
-	signal_global = 0;
+	signal_global = 1;
 	return (ft_init_struct(game)); // Init our main struct
 }
