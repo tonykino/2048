@@ -90,7 +90,7 @@ void print_metadata(t_game *game)
 int	ft_game_loop(t_game *game)
 {
 	game->key = 0; // à retenir qu'il est pas init
-	while(1) {
+	while(signal_global) {
 		clear();
 		update_board(game);
 

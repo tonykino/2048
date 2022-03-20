@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lost_menu.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:52:25 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 16:07:15 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/20 17:38:05 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_lost_menu(t_game *game)
 	game->key = 0;
 	game->selected_menu_pos = 0;
 	
-	while (1)
+	while (signal_global)
 	{
 		i = 0;
 		ft_clear(game); // My own clear function to also clear other variables (like cursor position)
