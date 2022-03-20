@@ -9,6 +9,7 @@ typedef struct s_score
 	int score;
 	struct s_score *next;
 }			t_score;
+
 typedef struct s_tile {
 	int value;
 	int line_idx;
@@ -32,6 +33,7 @@ typedef struct s_board {
 	int tile_height;
 	bool has_changed;
 	int	score;
+	bool is_printable;
 	enum_game_status game_status;
 	t_tile **tiles;
 } t_board;

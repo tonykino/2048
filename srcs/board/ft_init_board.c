@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_board.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 05:01:17 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 10:24:34 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 16:07:18 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int ft_init_board(t_game *game)
 			_init_tile(&game->board.tiles[line][col], line, col);
 		}
 	}
+	game->board.is_printable = false;
 	return (1);
 }

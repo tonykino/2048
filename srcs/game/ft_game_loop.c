@@ -65,6 +65,12 @@ void print_tiles_content(t_game *game)
 	}
 }
 
+bool board_is_printable(t_game *game)
+{
+	return ((COLS > (ft_numlen(game->max_size_tile) + 1) * game->game_size + 1) \
+			&& (LINES > (2 * game->game_size) + 1)); 
+}
+
 int	ft_game_loop(t_game *game)
 {
 	game->key = 0; // à retenir qu'il est pas init
@@ -95,8 +101,15 @@ int	ft_game_loop(t_game *game)
 
 		ft_get_max_size_tile(game);
 
-		print_board(game);
-		print_tiles_content(game);
+		if (board_is_printable(game))
+		{
+			print_board(game);
+			print_tiles_content(game);
+		}
+		else
+		{
+			mvprintw(LINES/2, (COLS / 2) - 4, "TOO SMALL");
+		}
 
 		// sprintf(msg, "Game status = %d", board.game_status);
 		// mvprintw(1, 1, msg); // Message de debug temporaire	
