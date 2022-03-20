@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_win_menu.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 05:44:28 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 12:46:17 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 16:01:02 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_win_menu(t_game *game)
 	char buff_itoa[30] = "";
 	char *menu[] = {
 		" CONTINUE ",
-		" SAVE ",
 		" EXIT "
 	};
 	int	menu_size = sizeof(menu) / sizeof(char *);
@@ -61,7 +60,7 @@ int	ft_win_menu(t_game *game)
 			ft_break_lines(game, 2);
 			for (i = 0; i < menu_size; i++)
 			{
-				if (i == 2)
+				if (i == 1)
 					ft_break_line(game);
 				if (game->selected_menu_pos == i)
 					attron(A_REVERSE);
@@ -81,15 +80,7 @@ int	ft_win_menu(t_game *game)
 		game->board.game_status = KEEP_PLAYING;
 		return ft_game_loop(game);
 	}
-	else if (game->selected_menu_pos == 1) // Save
-	{
-		clear();
-		printw("SAVE");
-		refresh();
-		while (1)
-		{}
-	}
-	if (game->selected_menu_pos == 2 || game->selected_menu_pos == -1) // Exit
+	else if (game->selected_menu_pos == 1 || game->selected_menu_pos == -1) // Exit
 	{
 		t_score *score = create_score(game->board.score, NULL);
 		if (!score)

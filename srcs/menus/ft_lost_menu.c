@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lost_menu.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:52:25 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 13:11:36 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 16:07:15 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	ft_lost_menu(t_game *game)
 	int	i;
 	char buff_itoa[30] = "";
 	char *menu[] = {
-		" SAVE ",
 		" EXIT "
 	};
 	int	menu_size = sizeof(menu) / sizeof(char *);
@@ -59,10 +58,10 @@ int	ft_lost_menu(t_game *game)
 			ft_print_center(game, "YOUR SCORE :");
 			ft_break_line(game);
 			ft_print_center(game, ft_itoa(game->board.score, buff_itoa));
-			ft_break_lines(game, 2);
+			ft_break_line(game);
 			for (i = 0; i < menu_size; i++)
 			{
-				if (i == 1)
+				if (i == 0)
 					ft_break_line(game);
 				if (game->selected_menu_pos == i)
 					attron(A_REVERSE);
@@ -82,13 +81,5 @@ int	ft_lost_menu(t_game *game)
 		return 0;
 	add_score(score, &game->scores);
 
-	if (game->selected_menu_pos == 0) // Save
-	{
-		clear();
-		printw("SAVE");
-		refresh();
-		while (1)
-		{}
-	}
 	return 1;
 }
