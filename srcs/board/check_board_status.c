@@ -36,6 +36,11 @@ void check_board_status(t_game *game)
 {
 	long win_val;
 
+	enum e_const
+	{
+		WIN_VALUE = 2048
+	};
+
 	if (WIN_VALUE != 0 && (WIN_VALUE & (WIN_VALUE - 1)) == 0)
 		win_val = WIN_VALUE;
 	else
