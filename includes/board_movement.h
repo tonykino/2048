@@ -18,7 +18,7 @@ typedef struct s_vector
 }				t_vector;
 
 #include "libft.h"
-#include "board.h"
+#include "struct.h"
 #include <stdbool.h>
 #include "vector_conversions.h"
 

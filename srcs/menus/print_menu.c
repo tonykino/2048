@@ -1,11 +1,9 @@
 #include "2048.h"
 
-void print_menu()
+void print_menu(t_game *game)
 {
-	t_vars	vars;
-
-	ft_init_struct(&vars);
+	ft_init_struct(&game->vars);
 	clear();
-	ft_get_win_size(&vars);
-	ft_start_menu(&vars); // Launch the start menu
+	ft_get_win_size(&game->vars);
+	ft_start_menu(game); // Launch the start menu
 }

@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:29:42 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 22:42:05 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 02:41:08 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <ncurses.h>
 # include <stdlib.h>
 #include "libft.h"
+#include "struct.h"
 
 # define ESC 27
 # define UP 259
@@ -25,26 +26,12 @@
 # define RIGHT 261
 # define ENTER 10
 
-typedef	struct s_vars
-{
-	int		nb_char_lines;
-	int		nb_char_cols;
-	int		actual_cursor_line;
-	int		key;
-	int		selected_menu_pos;
-	int		game_size;
-}	t_vars;
-
-/*
-	MAIN
-*/
-int		main();
 
 /*
 	MENUS
 */
-void	ft_start_menu(t_vars *vars);
-void	ft_size_menu(t_vars *vars);
+void	ft_start_menu(t_game *game);
+void	ft_size_menu(t_game *game);
 int		ft_select_menu(int move, int current_pos, int menu_size);
 
 /*
@@ -65,7 +52,7 @@ void	ft_launch_game(t_vars *vars);
 /*
 	LEADERBOARD
 */
-void	ft_leaderboard(t_vars *vars);
+void	ft_leaderboard(t_game *game);
 
 /*
 	LIB
@@ -78,5 +65,6 @@ void	ft_break_lines(t_vars *vars, int nb_breaks);
 void	ft_clear(t_vars *vars);
 void	ft_vertical_align(t_vars *vars, int element_height);
 void	ft_print_center(t_vars *vars, char *str);
+void	print_menu(t_game *game);
 
 #endif

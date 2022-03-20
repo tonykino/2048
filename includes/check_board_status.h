@@ -1,7 +1,7 @@
 #ifndef CHECK_BOARD_STATUS_H
 # define CHECK_BOARD_STATUS_H
 
-# include "board.h"
+#include "struct.h"
 
 # define DEFAULT_WIN 2048
 

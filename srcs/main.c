@@ -1,10 +1,12 @@
 #include <ncurses.h>
 #include <stdlib.h>
 #include <string.h>
-#include "board.h"
 #include "time.h"
+#include "struct.h"
+#include "board.h"
 #include "randomizer.h"
 #include "board_movement.h"
+#include "check_board_status.h"
 #include "2048.h"
 
 void print_tile_background(t_board *board, t_tile *tile)
@@ -83,7 +85,8 @@ void handle_arrow(int direction, t_board *board)
 
 int main()
 {
-	t_board board;
+	t_game game;
+	t_board board = game.board;
     WINDOW *game_window;
     char msg[40];
 	
@@ -96,7 +99,7 @@ int main()
 	// game_window = newwin(LINES, COLS, 0, 0);
 	keypad(stdscr, TRUE); // enable arrow keys // necessary ?? A priori oui sinon les fleches envoient 3 signaux
 	
-	print_menu();
+	print_menu(&game);
 	
 	// nonl(); // Remove to permit enter
 	init_board(&board);

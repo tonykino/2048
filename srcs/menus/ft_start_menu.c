@@ -6,13 +6,13 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 13:06:09 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 22:37:37 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 02:40:55 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_start_menu(t_vars *vars)
+void	ft_start_menu(t_game *game)
 {
 	int	i;
 	char *menu[] = {
@@ -22,6 +22,7 @@ void	ft_start_menu(t_vars *vars)
 	};
 	int	menu_size = sizeof(menu) / sizeof(char *);
 	int menu_height = 3 + menu_size; // int = nb lines hard coded in the print of the menu
+	t_vars *vars = &game->vars;
 
 	vars->key = 0;
 	vars->selected_menu_pos = 0;
@@ -81,7 +82,7 @@ void	ft_start_menu(t_vars *vars)
 	}
 
 	if (vars->selected_menu_pos == 0) // Play
-		ft_size_menu(vars);
+		ft_size_menu(game);
 	else if (vars->selected_menu_pos == 1) // Leaderboard
-		ft_leaderboard(vars);
+		ft_leaderboard(game);
 }

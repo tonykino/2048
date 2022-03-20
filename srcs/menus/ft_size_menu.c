@@ -6,13 +6,13 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 18:01:50 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 22:37:37 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 02:39:13 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_size_menu(t_vars *vars)
+void	ft_size_menu(t_game *game)
 {
 	int	i;
 	char *menu[] = {
@@ -22,6 +22,7 @@ void	ft_size_menu(t_vars *vars)
 	};
 	int	menu_size = sizeof(menu) / sizeof(char *);
 	int menu_height = 3 + menu_size; // int = nb lines hard coded in the print of the menu
+	t_vars *vars = &game->vars;
 
 	vars->key = 0;
 	vars->selected_menu_pos = 0;
@@ -72,13 +73,17 @@ void	ft_size_menu(t_vars *vars)
 	if (vars->selected_menu_pos == 0) // 4 X 4
 	{
 		vars->game_size = 4;
-		ft_launch_game(vars);
+		game->board.line_nb = 4;
+		game->board.col_nb = 4;
+		// ft_launch_game(vars);
 	}
 	else if (vars->selected_menu_pos == 1) // 5 X 5
 	{
+		game->board.line_nb = 5;
+		game->board.col_nb = 5;
 		vars->game_size = 5;
-		ft_launch_game(vars);
+		// ft_launch_game(vars);
 	}
 	else if (vars->selected_menu_pos == 2) // Back
-		ft_start_menu(vars);
+		ft_start_menu(game);
 }

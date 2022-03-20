@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_leaderboard.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:04:00 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 02:17:00 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/20 02:41:18 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 #include "file_scoring.h"
 
-void	ft_leaderboard(t_vars *vars)
+void	ft_leaderboard(t_game *game)
 {
 	int	i;
+	t_vars *vars = &game->vars;
 
 	t_score *scores = NULL;
 	int res = get_scores_from_file(&scores);
@@ -87,5 +88,5 @@ void	ft_leaderboard(t_vars *vars)
 	}
 
 	if (vars->selected_menu_pos == 0) // Back
-		ft_start_menu(vars);
+		ft_start_menu(game);
 }
