@@ -27,9 +27,9 @@ int free_all(t_game *game, int error)
 	}
 	if (!error)
 		put_score_to_file(game->scores, game->pseudo);
-	endwin();
-	delwin(stdscr);
 	nocbreak();
+	endwin();
+	printf("TEST\n");
 	destroy_list(&game->scores);
 	return (0);
 }
