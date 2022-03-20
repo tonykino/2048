@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_win_menu.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
+/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 05:44:28 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 17:38:11 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 19:14:54 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,20 @@ int	ft_win_menu(t_game *game)
 		refresh();
 		game->key = getch();
 	}
-
-	if (game->selected_menu_pos == 0) // Continue
+	if (signal_global)
 	{
-		game->board.game_status = KEEP_PLAYING;
-		return ft_game_loop(game);
-	}
-	else if (game->selected_menu_pos == 1 || game->selected_menu_pos == -1) // Exit
-	{
-		t_score *score = create_score(game->board.score, NULL);
-		if (!score)
-			return 0;
-		add_score(score, &game->scores);
+		if (game->selected_menu_pos == 0) // Continue
+		{
+			game->board.game_status = KEEP_PLAYING;
+			return ft_game_loop(game);
+		}
+		else if (game->selected_menu_pos == 1 || game->selected_menu_pos == -1) // Exit
+		{
+			t_score *score = create_score(game->board.score, NULL);
+			if (!score)
+				return 0;
+			add_score(score, &game->scores);
+		}
 	}
 	return (1);
 }

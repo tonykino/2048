@@ -43,9 +43,22 @@ void print_tile_value(t_game *game, t_tile *tile)
 	}
 }
 
+
+int get_trailing_zeros_nb(int value)
+{
+	int ret = 1;
+	while (value > 1)
+	{
+		value = value >> 1;
+		ret++;
+	}
+	return ret;	
+}
+
 void print_tile_content(t_game *game, t_tile *tile)
 {
-	attron(COLOR_PAIR(tile->value));
+
+	attron(COLOR_PAIR(get_trailing_zeros_nb(tile->value)));
 	attron(A_BOLD);
 	print_tile_background(game, tile);
 	print_tile_value(game, tile);
@@ -141,12 +154,14 @@ int	ft_game_loop(t_game *game)
 		refresh();
 		game->key = getch();
 	}
-
-	if (game->board.game_status == WIN)
-		return ft_win_menu(game);
-	else if (game->board.game_status == KEEP_PLAYING)
-		return ft_win_menu(game);
-	else if (game->board.game_status == LOST)
-		return ft_lost_menu(game);
+	if (signal_global)
+	{
+		if (game->board.game_status == WIN)
+			return ft_win_menu(game);
+		else if (game->board.game_status == KEEP_PLAYING)
+			return ft_win_menu(game);
+		else if (game->board.game_status == LOST)
+			return ft_lost_menu(game);
+	}
 	return (1);
 }
