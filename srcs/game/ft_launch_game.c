@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_launch_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:57:53 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/19 22:37:37 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 01:14:56 by nlafarge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	ft_launch_game(t_vars *vars)
 
 	while(1)
 	{
-		
+		//test	
 	}
 }
