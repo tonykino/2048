@@ -36,7 +36,6 @@ int		check_pseudo_format(char *pseudo);
 int		check_line_format(char *line);
 int		add_line_to_score(char *line, t_score **head);
 int		separate_pseudo_score(char *line) ;
-void	print_list(t_score *head);
 
 #endif
 

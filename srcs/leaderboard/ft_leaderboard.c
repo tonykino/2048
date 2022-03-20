@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:04:00 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 17:37:58 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 17:48:38 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_leaderboard(t_game *game)
 			t_score *tmpscores = scores;
 			while (tmpscores)
 			{
-				int tmp = ft_strlen(tmpscores->pseudo) + ft_strlen(ft_itoa(tmpscores->score, buff_itoa));
+				size_t tmp = ft_strlen(tmpscores->pseudo) + ft_strlen(ft_itoa(tmpscores->score, buff_itoa));
 				if (tmp > max_length)
 					max_length = tmp;
 				tmpscores = tmpscores->next;
@@ -73,7 +73,7 @@ int	ft_leaderboard(t_game *game)
 			printw("\n\n");
 			while(scores)
 			{
-				for (int x = 0; x < ((game->nb_char_cols - max_length) / 2 - 3); x++)
+				for (int x = 0; x < ((game->nb_char_cols - (int)max_length) / 2 - 3); x++)
 					printw(" ");
 				printw("%s ", scores->pseudo);
 				for (int x = -1; x < ((int)max_length - (int)ft_strlen(scores->pseudo) - (int)ft_strlen(ft_itoa(scores->score, buff_itoa))); x++)

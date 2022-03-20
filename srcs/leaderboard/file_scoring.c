@@ -176,12 +176,3 @@ void destroy_list(t_score **head)
 		*head = ptr_temp;
 	}
 }
-
-void print_list(t_score *head)
-{
-	while (head)
-	{
-		printf("%s:%d\n", head->pseudo, head->score);
-		head = head->next;
-	}
-}

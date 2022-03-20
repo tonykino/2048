@@ -11,11 +11,10 @@ SRC     = $(addprefix srcs/, \
 				$(addprefix menus/, 		ft_lost_menu.c ft_win_menu.c	ft_select_menu.c  ft_size_menu.c  ft_start_menu.c) \
 				$(addprefix tiles/,			ft_print_nb_ascii.c ft_print_tile_ascii.c))
 
-# OBJDIR := obj
 OBJ     := $(SRC:.c=.o)
 
 CC       = cc
-CFLAGS = $(CC) $(DEPFLAGS) -Iincludes #-Wall -Wextra -Werror
+CFLAGS = $(CC) $(DEPFLAGS) -Iincludes -Wall -Wextra -Werror
 
 %.o : %.c
 	$(CFLAGS) -c $< -o $@

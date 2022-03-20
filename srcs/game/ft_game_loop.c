@@ -34,7 +34,6 @@ void print_tile_value(t_game *game, t_tile *tile)
 			ft_print_tile_ascii(game, tile);
 		else
 		{
-			int size = ft_numlen(tile->value);
 			int margin_top = (game->board.tile_height - 1) / 2;
 			int margin_left = (game->board.tile_width - ft_numlen(tile->value)) / 2 + 1;
 			mvprintw(	tile->line_idx * game->board.tile_height + margin_top + 1 + game->board.board_offset + tile->line_idx, \

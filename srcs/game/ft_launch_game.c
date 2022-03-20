@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_launch_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:57:53 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 13:08:11 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 17:47:27 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,9 @@ void init_colors()
 
 int	ft_launch_game(t_game *game)
 {
-    char msg[40];
 	clear();
-
-	// nonl(); // Remove to permit enter
 	if (!ft_init_board(game))
 		return (0);
-
-	if (has_colors() == FALSE) {
-		endwin();
-		printf("Your terminal does not support color\n");
-		exit(1); // ??????? C'est pas interdit ?
-	}
 
 	init_colors();
 	generate_random_number_in_random_empty_tile(game);

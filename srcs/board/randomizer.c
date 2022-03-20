@@ -44,24 +44,12 @@ static int _generate_random_valid_number(void)
 
 void generate_random_number_in_random_empty_tile(t_game *game)
 {
-    char msg[80];
-
 	int empty_tile_nb = _get_empty_tile_nb(game);
 	if (empty_tile_nb == 0)
-	{
-		// sprintf(msg, "Error : no empty tile available"); 
-		// mvprintw(4, 1, msg); // Message de debug temporaire, cas spécial à gérer
 		return ;
-	}
 	int rand_nb = empty_tile_nb * ((double)rand())/RAND_MAX;
 	t_tile *tile_to_fill = _get_tile_to_fill(game, rand_nb);
 	if (tile_to_fill == NULL)
-	{
-		// sprintf(msg, "Error : tile to fill is NULL (rand_nb = %d)", rand_nb);
-		// mvprintw(4, 1, msg); // Message de debug temporaire, cas spécial à gérer
 		return ;
-	}
 	tile_to_fill->value = _generate_random_valid_number();
-	// sprintf(msg, "Rand_nb = %d, new value = %d", rand_nb, tile_to_fill->value);
-	// mvprintw(4, 1, msg); // Message de debug temporaire, cas spécial à gérer
 }
