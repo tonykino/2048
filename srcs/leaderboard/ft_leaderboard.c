@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_leaderboard.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:04:00 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 12:05:09 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 12:24:41 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,5 @@ int	ft_leaderboard(t_game *game)
 	destroy_list(&scores);
 	if (game->selected_menu_pos == 0) // Back
 		return ft_start_menu(game);
+	return 1;
 }

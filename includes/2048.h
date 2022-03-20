@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:29:42 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 12:09:09 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 12:22:10 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ void	ft_print_center(t_game *game, char *str);
 void	print_menu(t_game *game);
 int		ft_is_ascii_possible(t_game *game);
 void	ft_print_tile_ascii(t_game *game, t_tile *tile);
-void	ft_init(t_game *game);
+int	ft_init(t_game *game);
 void	ft_get_max_size_tile(t_game *game);
-void	ft_win_menu(t_game *game);
-void	ft_lost_menu(t_game *game);
-void	ft_game_loop(t_game *game);
+int	ft_win_menu(t_game *game);
+int	ft_lost_menu(t_game *game);
+int	ft_game_loop(t_game *game);
 void	ft_too_small(t_game *game);
 void	ft_print_title(int x, int y);
 void	ft_print_nb_ascii(int nb, int x, int y);

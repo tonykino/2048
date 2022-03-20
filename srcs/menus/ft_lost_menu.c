@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lost_menu.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:52:25 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 12:05:19 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 12:24:52 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_lost_menu(t_game *game)
+int	ft_lost_menu(t_game *game)
 {
 	int	i;
 	char buff_itoa[30] = "";
@@ -85,4 +85,5 @@ void	ft_lost_menu(t_game *game)
 		while (1)
 		{}
 	}
+	return 1;
 }

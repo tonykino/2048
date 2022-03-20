@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 01:54:55 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 11:36:07 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 12:23:24 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
+#include "file_scoring.h"
 
 int	ft_init_struct(t_game *game)
 {

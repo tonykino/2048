@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_size_menu.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 18:01:50 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 11:46:03 by afaure           ###   ########.fr       */
+/*   Updated: 2022/03/20 12:24:01 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,5 @@ int	ft_size_menu(t_game *game)
 	}
 	else if (game->selected_menu_pos == 2) // Back
 		return ft_start_menu(game);
+	return 1;
 }

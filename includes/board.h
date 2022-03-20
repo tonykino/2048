@@ -18,7 +18,7 @@
 #define VALUE1024_PAIR	1024
 #define VALUE2048_PAIR	2048
 
-void ft_init_board(t_game *game);
+int ft_init_board(t_game *game);
 void update_board(t_game *game);
 void print_board(t_game *game);
 

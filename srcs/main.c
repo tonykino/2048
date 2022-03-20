@@ -28,6 +28,7 @@ int free_all(t_game *game, int error)
 	// if (!error && put_score_to_file(game->scores) == ERROR_FD)
 		// print_error_msg(ERROR_FD);
 	destroy_list(&game->scores);
+	return 0;
 }
 
 int main()
