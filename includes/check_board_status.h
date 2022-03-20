@@ -10,4 +10,6 @@ enum e_const
 	WIN_VALUE = 32
 };
 
+void check_board_status(t_game *game);
+
 #endif

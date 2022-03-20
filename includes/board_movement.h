@@ -1,14 +1,6 @@
 #ifndef BOARD_MOVEMENT_H
 #define BOARD_MOVEMENT_H
 
-typedef enum e_dir // un enum pour qui permet de stocker une direction
-{
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT,
-}			enum_dir;
-
 // une struct vector qui peut permettre de stocker des positions
 //mais qui sera aussi utiliséé pour stocker les incréments qui seront utilisé pour le mouvement
 typedef struct s_vector 
