@@ -11,12 +11,12 @@ static int	get_nsize(unsigned int n)
 	return (size);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int n, char *buff)
 {
 	int				len;
 	int				is_neg;
 	unsigned int	unbr;
-	char			*dst;
+	char			*dst = buff;
 
 	is_neg = (n < 0);
 	if (is_neg)
@@ -24,9 +24,6 @@ char	*ft_itoa(int n)
 	else
 		unbr = n;
 	len = is_neg + get_nsize(unbr);
-	dst = (char *)ft_calloc(len + 1, sizeof(char));
-	if (dst == NULL)
-		return (NULL);
 	if (is_neg)
 		dst[0] = '-';
 	len--;

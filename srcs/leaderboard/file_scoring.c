@@ -15,6 +15,7 @@ int ft_clean_quit(t_score **head, int fd, char *line, int error)
 int get_scores_from_file(t_score **head)
 {
 	char *line = NULL;
+	*head = NULL;
 	int fd = open("scores.txt", O_RDONLY);
 
 	if (fd < 0)

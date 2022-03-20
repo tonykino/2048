@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lost_menu.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:52:25 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 06:57:02 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/20 12:05:19 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_lost_menu(t_game *game)
 {
 	int	i;
+	char buff_itoa[30] = "";
 	char *menu[] = {
 		" SAVE ",
 		" EXIT "
@@ -57,7 +58,7 @@ void	ft_lost_menu(t_game *game)
 			ft_break_lines(game, 2);
 			ft_print_center(game, "YOUR SCORE :");
 			ft_break_line(game);
-			ft_print_center(game, ft_itoa(game->board.score));
+			ft_print_center(game, ft_itoa(game->board.score, buff_itoa));
 			ft_break_lines(game, 2);
 			for (i = 0; i < menu_size; i++)
 			{

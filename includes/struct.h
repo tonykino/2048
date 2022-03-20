@@ -3,6 +3,12 @@
 
 #include <stdbool.h>
 
+typedef struct s_score
+{
+	char * pseudo;
+	int score;
+	struct s_score *next;
+}			t_score;
 typedef struct s_tile {
 	int value;
 	int line_idx;
@@ -39,6 +45,7 @@ typedef struct s_game {
 	int		selected_menu_pos;
 	int		game_size;
 	int		max_size_tile;
+	t_score *scores;
 } t_game;
 
 #endif

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 01:54:55 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 11:36:07 by afaure           ###   ########.fr       */
+/*   Created: 2020/11/20 23:31:23 by afaure            #+#    #+#             */
+/*   Updated: 2021/08/17 00:12:28 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "2048.h"
+#include "libft.h"
 
-int	ft_init_struct(t_game *game)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	game->nb_char_lines = 0;
-	game->nb_char_cols = 0;
-	game->key = 0;
-	game->actual_cursor_line = 0;
-	game->selected_menu_pos = 0;
-	game->game_size = 0;
-	return (get_scores_from_file(&game->scores));
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		*(unsigned char *)(s + i) = (unsigned char)c;
+		i++;
+	}
+	return (s);
 }

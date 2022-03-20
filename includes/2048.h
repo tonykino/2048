@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:29:42 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 11:45:57 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 12:09:09 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 /*
 	MENUS
 */
-void	ft_start_menu(t_game *game);
-void	ft_size_menu(t_game *game);
+int		ft_start_menu(t_game *game);
+int		ft_size_menu(t_game *game);
 int		ft_select_menu(int move, int current_pos, int menu_size);
 
 /*
@@ -47,18 +47,18 @@ int		ft_is_esc_key(t_game *game);
 /*
 	GAME
 */
-void	ft_launch_game(t_game *game);
+int	ft_launch_game(t_game *game);
 
 /*
 	LEADERBOARD
 */
-void	ft_leaderboard(t_game *game);
+int	ft_leaderboard(t_game *game);
 
 /*
 	LIB
 */
 void	ft_debug(t_game *game);
-void	ft_init_struct(t_game *game);
+int		ft_init_struct(t_game *game);
 void	ft_get_win_size(t_game *game);
 void	ft_break_line(t_game *game);
 void	ft_break_lines(t_game *game, int nb_breaks);

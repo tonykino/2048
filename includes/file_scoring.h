@@ -6,17 +6,11 @@
 #include "fcntl.h"
 #include <ncurses.h>
 
-# define SUCCESS		0
+# define SUCCESS		1
 # define ERROR_FD		-1
 # define ERROR_MALLOC	-2
 # define ERROR_FORMAT	-3
 
-typedef struct s_score
-{
-	char * pseudo;
-	int score;
-	struct s_score *next;
-}			t_score;
 
 //functions for other users
 

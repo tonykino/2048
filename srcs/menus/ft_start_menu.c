@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start_menu.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 13:06:09 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 08:51:24 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/20 10:39:59 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_start_menu(t_game *game)
+int	ft_start_menu(t_game *game)
 {
 	int	i;
 	char *menu[] = {
@@ -76,7 +76,8 @@ void	ft_start_menu(t_game *game)
 	}
 
 	if (game->selected_menu_pos == 0) // Play
-		ft_size_menu(game);
+		return ft_size_menu(game);
 	else if (game->selected_menu_pos == 1) // Leaderboard
-		ft_leaderboard(game);
+		return ft_leaderboard(game);
+	return (1);
 }

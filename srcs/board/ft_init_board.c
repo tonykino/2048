@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_board.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 05:01:17 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 05:37:16 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/20 10:24:34 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,17 @@ static void _init_tile(t_tile *tile, int line, int col)
 	tile->value = 0;
 }
 
-void	ft_init_board(t_game *game)
+int ft_init_board(t_game *game)
 {
 	game->board.tile_nb = game->board.col_nb * game->board.line_nb;
 	game->board.tiles = ft_calloc(game->board.line_nb, sizeof(t_tile *)); // Todo : Protéger les mallocs
+	if (!game->board.tiles)
+		return (0);
 	for (int i = 0; i < game->board.line_nb; i++)
 	{
 		game->board.tiles[i] = ft_calloc(game->board.col_nb, sizeof(t_tile)); // Todo : Protéger les mallocs
+		if (!game->board.tiles[i])
+			return (0);
 	}
 	game->board.tile_width = (COLS - game->board.col_nb - 1) / game->board.col_nb;
 	game->board.tile_height = (LINES - game->board.line_nb - 1) / game->board.line_nb;
@@ -38,4 +42,5 @@ void	ft_init_board(t_game *game)
 			_init_tile(&game->board.tiles[line][col], line, col);
 		}
 	}
+	return (1);
 }

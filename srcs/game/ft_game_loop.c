@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:18:12 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 11:40:25 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 12:11:47 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void print_tile_background(t_game *game, t_tile *tile)
 
 void print_tile_value(t_game *game, t_tile *tile)
 {
+	char buff[30] = "";
 	if (tile->value != 0)
 	{
 		if (ft_is_ascii_possible(game))
@@ -47,7 +48,7 @@ void print_tile_value(t_game *game, t_tile *tile)
 		{
 			mvprintw(	tile->line_idx * (game->board.tile_height +1) + game->board.tile_height / 2, \
 					tile->col_idx * (game->board.tile_width + 1) + game->board.tile_width / 2, \
-					ft_itoa(tile->value));
+					ft_itoa(tile->value, buff));
 		}
 	}
 }
@@ -73,7 +74,7 @@ void print_tiles_content(t_game *game)
 	}
 }
 
-void	ft_game_loop(t_game *game)
+int	ft_game_loop(t_game *game)
 {
 	game->key = 0; // à retenir qu'il est pas init
 	while(1) {
@@ -122,9 +123,10 @@ void	ft_game_loop(t_game *game)
 	}
 
 	if (game->board.game_status == WIN)
-		ft_win_menu(game);
+		return ft_win_menu(game);
 	else if (game->board.game_status == KEEP_PLAYING)
-		ft_win_menu(game);
+		return ft_win_menu(game);
 	else if (game->board.game_status == LOST)
-		ft_lost_menu(game);
+		return ft_lost_menu(game);
+	return (1);
 }

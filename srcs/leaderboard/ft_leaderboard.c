@@ -3,22 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_leaderboard.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:04:00 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 08:52:42 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/20 12:05:09 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 #include "file_scoring.h"
 
-void	ft_leaderboard(t_game *game)
+int	ft_leaderboard(t_game *game)
 {
 	int	i;
+	char buff_itoa[30] = ""; // j'ai fait une fonction itoa custom pour ne plus avoir de malloc
 
 	t_score *scores = NULL;
 	int res = get_scores_from_file(&scores);
+	if (res != SUCCESS)
+		return (0);
 
 	char *menu[] = {
 		" BACK "
@@ -61,7 +64,7 @@ void	ft_leaderboard(t_game *game)
 			t_score *tmpscores = scores;
 			while (tmpscores)
 			{
-				int tmp = ft_strlen(tmpscores->pseudo) + ft_strlen(ft_itoa(tmpscores->score));
+				int tmp = ft_strlen(tmpscores->pseudo) + ft_strlen(ft_itoa(tmpscores->score, buff_itoa));
 				if (tmp > max_length)
 					max_length = tmp;
 				tmpscores = tmpscores->next;
@@ -73,7 +76,7 @@ void	ft_leaderboard(t_game *game)
 				for (int x = 0; x < ((game->nb_char_cols - max_length) / 2 - 3); x++)
 					printw(" ");
 				printw("%s ", scores->pseudo);
-				for (int x = -1; x < ((int)max_length - (int)ft_strlen(scores->pseudo) - (int)ft_strlen(ft_itoa(scores->score))); x++)
+				for (int x = -1; x < ((int)max_length - (int)ft_strlen(scores->pseudo) - (int)ft_strlen(ft_itoa(scores->score, buff_itoa))); x++)
 					printw("-");
 				printw(" ");
 				printw("%d\n", scores->score);
@@ -93,6 +96,7 @@ void	ft_leaderboard(t_game *game)
 		game->key = getch();
 	}
 
+	destroy_list(&scores);
 	if (game->selected_menu_pos == 0) // Back
-		ft_start_menu(game);
+		return ft_start_menu(game);
 }

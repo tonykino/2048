@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_win_menu.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlafarge <nlafarge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afaure <afaure@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 05:44:28 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 06:43:54 by nlafarge         ###   ########.fr       */
+/*   Updated: 2022/03/20 12:04:40 by afaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "2048.h"
 
-void	ft_win_menu(t_game *game)
+int	ft_win_menu(t_game *game)
 {
 	int	i;
+	char buff_itoa[30] = "";
 	char *menu[] = {
 		" CONTINUE ",
 		" SAVE ",
@@ -56,7 +57,7 @@ void	ft_win_menu(t_game *game)
 			ft_vertical_align(game, menu_height);
 			ft_print_center(game, "YOUR SCORE :");
 			ft_break_line(game);
-			ft_print_center(game, ft_itoa(game->board.score));
+			ft_print_center(game, ft_itoa(game->board.score, buff_itoa));
 			ft_break_lines(game, 2);
 			for (i = 0; i < menu_size; i++)
 			{
@@ -78,7 +79,7 @@ void	ft_win_menu(t_game *game)
 	if (game->selected_menu_pos == 0) // Continue
 	{
 		game->board.game_status = KEEP_PLAYING;
-		ft_game_loop(game);
+		return ft_game_loop(game);
 	}
 	else if (game->selected_menu_pos == 1) // Save
 	{
@@ -88,4 +89,5 @@ void	ft_win_menu(t_game *game)
 		while (1)
 		{}
 	}
+	return (1);
 }
