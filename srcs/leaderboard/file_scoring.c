@@ -37,7 +37,7 @@ int get_scores_from_file(t_score **head)
 
 int put_score_to_file(t_score *head, char *pseudo)
 {
-	int fd = open("scores.txt", O_TRUNC | O_WRONLY);
+	int fd = open("scores.txt", O_CREAT | O_TRUNC | O_WRONLY, S_IRWXO);
 	if (fd < 0)
 		return (ERROR_FD);
 	while(head)
@@ -67,6 +67,8 @@ int check_pseudo_format(char *pseudo)
 		if(!ft_isalnum(pseudo[i]))
 			return (0);
 	}
+	if (ft_strlen(pseudo) > 20)
+		return (0);
 	return (1);
 }
 
@@ -138,8 +140,10 @@ t_score *create_score(int score, char *pseudo)
 
 void add_score(t_score *to_add, t_score **head)
 {
-	if(!head || !*head)
+	if(!head)
 		return;
+	if (!*head)
+		*head = to_add;
 	t_score *ptr_temp = *head;
 
 	if (to_add->score > (*head)->score)

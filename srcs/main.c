@@ -24,26 +24,9 @@ int free_all(t_game *game, int error)
 		free(game->board.tiles);
 	}
 	if (!error)
-		put_score_to_file(game->scores);
-	// if (!error && put_score_to_file(game->scores) == ERROR_FD)
-		// print_error_msg(ERROR_FD);
-	destroy_list(&game->scores);
-	return 0;
-}
-
-int free_all(t_game *game, int error)
-{
-	if (game->board.tiles)
-	{
-		for(int y = 0; y < game->game_size; y++)
-		{
-			if (game->board.tiles[y])
-				free(game->board.tiles[y]);
-		}
-		free(game->board.tiles);
-	}
-	if (!error)
 		put_score_to_file(game->scores, game->pseudo);
+	endwin();
+	delwin(stdscr);
 	destroy_list(&game->scores);
 	return (0);
 }
@@ -54,23 +37,29 @@ int main(int argc, char **argv)
 	t_game game;
 	ft_memset(&game, '\0', sizeof(t_game));
 
-	if (argc != 2)
+	if (argc < 2)
+		game.pseudo = "AUTONA";
+	else if (argc > 2)
 	{
 		write(1, "Usage : ./2048 [pseudo]\n", 24);
 		return (1);
 	}
 	else
-		game.pseudo = argv[1];
+	{
+		if (check_pseudo_format(argv[1]))
+			game.pseudo = argv[1];
+		else
+			write(1, "Wrong pseudo format, onyl 20 alphanum chars\n", 44);
+	}
 
 	if ((ret = ft_init(&game)) != SUCCESS) // Init everything
 	{
 		// print_err_msg(ret); // TODO THIS FUNCTION
-		return (free_all(&game, 1));
+		if (ret != ERROR_FD)
+			return (free_all(&game, 1));
 	}
 	ft_start_menu(&game); // Launch the start menu
     
-	endwin();
-	delwin(stdscr);
 	free_all(&game, 0);
     return 0;
 }
