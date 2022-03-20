@@ -28,8 +28,8 @@ int free_all(t_game *game, int error)
 	if (!error)
 		put_score_to_file(game->scores, game->pseudo);
 	nocbreak();
+	curs_set(1);
 	endwin();
-	printf("TEST\n");
 	destroy_list(&game->scores);
 	return (0);
 }
@@ -52,7 +52,10 @@ int main(int argc, char **argv)
 		if (check_pseudo_format(argv[1]))
 			game.pseudo = argv[1];
 		else
+		{
 			write(1, "Wrong pseudo format, onyl 20 alphanum chars\n", 44);
+			return (1);
+		}
 	}
 
 	if ((ret = ft_init(&game)) != SUCCESS) // Init everything
@@ -62,7 +65,6 @@ int main(int argc, char **argv)
 			return (free_all(&game, 1));
 	}
 	ft_start_menu(&game); // Launch the start menu
-    
 	free_all(&game, 0);
     return 0;
 }
