@@ -17,15 +17,20 @@ void print_tile_background(t_board *board, t_tile *tile)
 	}
 }
 
+void print_tile_value(t_board *board, t_tile *tile)
+{
+	if (tile->value != 0)
+		mvprintw(	tile->line_idx * (board->tile_height +1) + board->tile_height / 2, \
+					tile->col_idx * (board->tile_width + 1) + board->tile_width / 2, \
+					ft_itoa(tile->value));
+}
+
 void print_tile_content(t_board *board, t_tile *tile)
 {
 	attron(COLOR_PAIR(tile->value));
 	attron(A_BOLD);
 	print_tile_background(board, tile);
-	if (tile->value != 0)
-		mvprintw(	tile->line_idx * (board->tile_height +1) + board->tile_height / 2, \
-					tile->col_idx * (board->tile_width + 1) + board->tile_width / 2, \
-					ft_itoa(tile->value));
+	print_tile_value(board, tile);
 	attroff(A_BOLD);
 	attroff(COLOR_PAIR(tile->value));
 }
