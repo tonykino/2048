@@ -6,7 +6,7 @@
 /*   By: tokino <tokino@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:18:12 by nlafarge          #+#    #+#             */
-/*   Updated: 2022/03/20 12:11:47 by tokino           ###   ########.fr       */
+/*   Updated: 2022/03/20 12:57:21 by tokino           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void print_tile_background(t_game *game, t_tile *tile)
 
 void print_tile_value(t_game *game, t_tile *tile)
 {
-	char buff[30] = "";
+	char buff[11] = "";
 	if (tile->value != 0)
 	{
 		if (ft_is_ascii_possible(game))
