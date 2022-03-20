@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tokino <tokino@student.42.fr>              +#+  +:+       +#+         #
+#    By: afaure <afaure@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/19 00:10:11 by nlafarge          #+#    #+#              #
-#    Updated: 2022/03/20 12:27:39 by tokino           ###   ########.fr        #
+#    Updated: 2022/03/20 16:39:15 by afaure           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@
 NAME    = 2048
 
 SRC     = $(addprefix srcs/, \
-				main.c \
+				main.c signal_handling.c\
 				$(addprefix board/,			ft_is_ascii_possible.c ft_get_max_size_tile.c ft_init_board.c board.c board_movement.c check_board_status.c randomizer.c vector_conversions.c) \
 				$(addprefix core/,			ft_keypress.c) \
 				$(addprefix game/,  		ft_game_loop.c ft_launch_game.c) \
@@ -85,7 +85,7 @@ SRC     = $(addprefix srcs/, \
 # DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
 CC       = cc
-CFLAGS = $(CC) $(DEPFLAGS) -Iincludes #-Wall -Wextra -Werror
+CFLAGS = $(CC) $(DEPFLAGS) -Iincludes -g3 #-Wall -Wextra -Werror
 
 %.o : %.c
 
