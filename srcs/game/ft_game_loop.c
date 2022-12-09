@@ -27,7 +27,6 @@ void print_tile_background(t_game *game, t_tile *tile)
 
 void print_tile_value(t_game *game, t_tile *tile)
 {
-	char buff[11] = "";
 	if (tile->value != 0)
 	{
 		if (ft_is_ascii_possible(game))
@@ -38,7 +37,7 @@ void print_tile_value(t_game *game, t_tile *tile)
 			int margin_left = (game->board.tile_width - ft_numlen(tile->value)) / 2 + 1;
 			mvprintw(	tile->line_idx * game->board.tile_height + margin_top + 1 + game->board.board_offset + tile->line_idx, \
 						tile->col_idx * (game->board.tile_width + 1) + margin_left, \
-						ft_itoa(tile->value, buff));
+						"%d", tile->value);
 		}
 	}
 }
